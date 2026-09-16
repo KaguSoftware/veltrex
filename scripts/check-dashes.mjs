@@ -3,7 +3,7 @@
 // The characters are written as ESCAPES, never as literals, so that this file is
 // itself inside the gate. A detector containing the character it bans needs a
 // self-exemption list, and a self-exemption list is how the rule quietly dies.
-import { readFileSync } from 'node:fs'
+import { readFileSync, existsSync } from 'node:fs'
 import { execSync } from 'node:child_process'
 
 const BANNED = new Map([
@@ -21,6 +21,7 @@ const TEXT = /\.(md|ts|tsx|js|jsx|mjs|cjs|css|json|html|txt|yml|yaml)$/i
 const files = execSync('git ls-files', { encoding: 'utf8' })
   .split('\n')
   .filter((f) => f && TEXT.test(f))
+  .filter((f) => existsSync(f))
 
 let bad = 0
 for (const file of files) {

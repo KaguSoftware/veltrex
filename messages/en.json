@@ -82,5 +82,29 @@
     "title": "Something went wrong",
     "intro": "An unexpected error occurred.",
     "retry": "Try again"
+  },
+  "PrivacyText": {
+    "intro": "This policy explains how the Veltrex website handles visitor data. The text is a draft and will be reviewed by a lawyer before launch.",
+    "collectedHeading": "What is collected",
+    "collectedBody": "This site has no contact form, no accounts and no comments. There is therefore nothing you submit to us through your browser. The infrastructure hosting the site does, however, keep a server log entry for every request, and those entries include your IP address.",
+    "cookiesHeading": "Cookies",
+    "cookiesBody": "This site sets no advertising, measurement or analytics cookies, and embeds no maps, videos or social media widgets. The only thing stored in your browser is the light or dark theme you explicitly choose. It stays on your device and is never sent to us.",
+    "hostingHeading": "Hosting",
+    "hostingBody": "The site is hosted by a provider whose servers are located outside Türkiye. Processing of server logs is therefore treated as a cross-border transfer of personal data. The legal basis for that transfer and the retention period will be stated in this section after legal review.",
+    "contactHeading": "Making a request",
+    "contactBody": "You can send requests about your personal data in writing to our postal address below. See the Data Protection Notice for detail."
+  },
+  "DataProtectionText": {
+    "controllerIntro": "Under Turkish Personal Data Protection Law No. 6698, the data controller is Veltrex Teknoloji ve Ticaret Anonim Şirketi. This text is a draft and will be reviewed by a lawyer before launch.",
+    "dataHeading": "Personal data processed",
+    "dataBody": "Because this site has no form, there is no field you complete. When you view the site, however, the hosting infrastructure records server log entries containing your IP address, the time of the request and your browser details. An IP address is personal data.",
+    "purposeHeading": "Purpose of processing",
+    "purposeBody": "Server logs are kept solely to maintain the security and availability of the site, to debug faults and to prevent abuse. They are not used for marketing, profiling or advertising.",
+    "transferHeading": "Cross-border transfer",
+    "transferBody": "Because hosting is provided from servers located outside Türkiye, server log records are transferred abroad. The basis for that transfer under article 9 of the Law will be stated explicitly in this section after legal review.",
+    "rightsHeading": "Your rights",
+    "rightsBody": "Under article 11 of the Law you have the right to learn whether your personal data is processed, to request information if it is, to learn the purpose of processing, to know the third parties to whom data is transferred in Türkiye or abroad, to request correction of incomplete or inaccurate data, and to request erasure.",
+    "applyHeading": "How to apply",
+    "applyBody": "You can submit requests in writing to Yeşilce Mah. Yunus Emre Cad. No: 8/1, Kağıthane / İstanbul. As no application email address is published at this stage, the postal address is the only valid channel under the applicable regulation."
   }
 }

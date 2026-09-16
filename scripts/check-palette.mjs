@@ -12,7 +12,7 @@
  *    keywords are only matched in VALUE POSITION, meaning after a colon or
  *    inside a colour function, and comments are stripped first.
  */
-import { readFileSync } from 'node:fs'
+import { readFileSync, existsSync } from 'node:fs'
 import { execSync } from 'node:child_process'
 
 const TARGETS = /\.(css|ts|tsx|js|jsx|mjs|svg|html)$/i
@@ -58,11 +58,44 @@ const RULES = [
   },
 ]
 
+/**
+ * The only exempt files, and each one is justified individually.
+ *
+ * This list stays SHORT on purpose. The rule it protects is about design values
+ * authored for this site, and a broad exemption would quietly turn the gate off.
+ * Nothing under src/app, src/components (other than the generated logo data) or
+ * any stylesheet may ever be added here.
+ */
+const EXEMPT = new Set([
+  // The gate itself necessarily contains the patterns it bans.
+  'scripts/check-palette.mjs',
+
+  /*
+   * Generated brand artwork. The supplied monochrome logo variant is genuinely
+   * pure white: that is the artwork the brand owner provided for dark grounds,
+   * not a design value we chose, and rewriting it would falsify the asset.
+   *
+   * It also never paints as white. Logo.tsx renders mono variants with
+   * fill="currentColor", so these hexes only ever act as the fallback inside
+   * var(--logo-*, ...) for a consumer that does not set the variable.
+   */
+  'assets/brand/dist/horizontal-mono.svg',
+  'assets/brand/dist/vertical-mono.svg',
+  'src/components/brand/logo-paths.ts',
+
+  /*
+   * The extractor names the colours it reads out of the PDF, including white
+   * for the mono pages and an initial black fill for the PDF graphics state
+   * default. Both are descriptions of the source file, not design choices.
+   */
+  'tools/brand/extract-logo.mjs',
+])
+
 const files = execSync('git ls-files', { encoding: 'utf8' })
   .split('\n')
   .filter((f) => f && TARGETS.test(f))
-  // The gate itself necessarily contains the patterns it bans.
-  .filter((f) => f !== 'scripts/check-palette.mjs')
+  .filter((f) => existsSync(f))
+  .filter((f) => !EXEMPT.has(f))
 
 let bad = 0
 for (const file of files) {

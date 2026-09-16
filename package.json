@@ -11,8 +11,10 @@
     "check:palette": "node scripts/check-palette.mjs",
     "check:urls": "node scripts/check-public-urls.mjs",
     "typecheck": "tsc --noEmit",
-    "verify": "npm run check:dashes && npm run check:palette && npm run check:messages && npm run typecheck && npm run lint && npm run build && npm run check:urls",
-    "check:messages": "node scripts/check-messages.mjs"
+    "verify": "npm run check:dashes && npm run check:palette && npm run check:messages && npm run typecheck && npm run lint && npm run build && npm run check:prerender && npm run check:urls",
+    "check:messages": "node scripts/check-messages.mjs",
+    "check:prerender": "node scripts/check-prerender.mjs",
+    "brand:extract": "node tools/brand/extract-logo.mjs"
   },
   "dependencies": {
     "next": "16.3.5",
@@ -36,5 +38,9 @@
     "tailwindcss": "4.3.3",
     "typescript": "5.9.3",
     "zod": "4.6.5"
+  },
+  "type": "module",
+  "compilerOptions": {
+    "allowImportingTsExtensions": true
   }
 }

@@ -1,0 +1,94 @@
+{
+  "variants": [
+    {
+      "name": "horizontal-duotone",
+      "paths": 26,
+      "roles": {
+        "mark-over": 1,
+        "mark-under": 1,
+        "wordmark": 7,
+        "tagline": 16,
+        "tagline-comma": 1
+      },
+      "colours": [
+        "#0065EA",
+        "#082358",
+        "#6D6E71"
+      ],
+      "inkBox": {
+        "x": 294.51,
+        "y": 318.38,
+        "w": 2595.91,
+        "h": 675.25
+      },
+      "bytes": 8439,
+      "droppedBackground": 0
+    },
+    {
+      "name": "vertical-duotone",
+      "paths": 26,
+      "roles": {
+        "mark-over": 1,
+        "mark-under": 1,
+        "wordmark": 7,
+        "tagline": 16,
+        "tagline-comma": 1
+      },
+      "colours": [
+        "#0065EA",
+        "#082358",
+        "#6D6E71"
+      ],
+      "inkBox": {
+        "x": 1128.87,
+        "y": 207.62,
+        "w": 1184.26,
+        "h": 868.36
+      },
+      "bytes": 8836,
+      "droppedBackground": 0
+    },
+    {
+      "name": "horizontal-mono",
+      "paths": 26,
+      "roles": {
+        "mark-over": 1,
+        "mark-under": 1,
+        "wordmark": 7,
+        "tagline": 17
+      },
+      "colours": [
+        "#FFFFFF"
+      ],
+      "inkBox": {
+        "x": 293.51,
+        "y": 318,
+        "w": 2596.91,
+        "h": 675.62
+      },
+      "bytes": 8500,
+      "droppedBackground": 1
+    },
+    {
+      "name": "vertical-mono",
+      "paths": 26,
+      "roles": {
+        "wordmark": 7,
+        "tagline": 17,
+        "mark-over": 1,
+        "mark-under": 1
+      },
+      "colours": [
+        "#FFFFFF"
+      ],
+      "inkBox": {
+        "x": 1116.58,
+        "y": 200.06,
+        "w": 1204.46,
+        "h": 893.32
+      },
+      "bytes": 8886,
+      "droppedBackground": 1
+    }
+  ]
+}

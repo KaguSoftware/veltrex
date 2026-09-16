@@ -11,13 +11,13 @@ const nextConfig: NextConfig = {
   // it off keeps the classic fully static build. Turning it on later makes
   // generateStaticParams mandatory for every root param or the build fails.
 
-  experimental: {
-    // Catches requests that fall OUTSIDE the proxy matcher, which the
-    // [locale]/[...rest] catch-all cannot reach. Required because the root
-    // layout lives at app/[locale]/layout.tsx, and Next's own docs recommend
-    // this file for exactly that shape. Still experimental in 16.3.5.
-    globalNotFound: true,
-  },
+  /*
+   * experimental.globalNotFound is NOT enabled, because it does not help here.
+   * The proxy rewrites every request into the locale segment, so no request
+   * ever fails to match a route, which is the only case that file handles.
+   * Unknown paths are rewritten to [locale]/404 with a 404 status instead.
+   * See src/app/[locale]/404/page.tsx for the measurements behind this.
+   */
 
   typescript: {
     // Never ignore build errors. Stated explicitly so nobody adds it later to

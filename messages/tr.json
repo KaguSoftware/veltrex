@@ -82,5 +82,29 @@
     "title": "Bir şeyler ters gitti",
     "intro": "Beklenmeyen bir hata oluştu.",
     "retry": "Tekrar deneyin"
+  },
+  "PrivacyText": {
+    "intro": "Bu politika, veltrex web sitesinin ziyaretçi verilerini nasıl işlediğini açıklar. Metin taslak niteliğindedir ve yayına alınmadan önce hukuki incelemeden geçecektir.",
+    "collectedHeading": "Toplanan veriler",
+    "collectedBody": "Bu sitede iletişim formu, üyelik veya yorum alanı bulunmamaktadır. Dolayısıyla tarayıcınız üzerinden bize doğrudan ilettiğiniz bir kişisel veri yoktur. Buna karşılık, siteyi barındıran altyapı her istek için sunucu kaydı tutar ve bu kayıtlar IP adresinizi içerir.",
+    "cookiesHeading": "Çerezler",
+    "cookiesBody": "Bu sitede reklam, ölçümleme veya analiz çerezi kullanılmaz. Gömülü harita, video veya sosyal medya bileşeni de bulunmaz. Tarayıcınızda saklanan tek bilgi, açık tercihinizle seçtiğiniz açık veya koyu tema ayarıdır; bu ayar yalnızca cihazınızda kalır ve tarafımıza iletilmez.",
+    "hostingHeading": "Barındırma",
+    "hostingBody": "Site, sunucuları Türkiye dışında bulunan bir hizmet sağlayıcı üzerinde barındırılmaktadır. Sunucu kayıtlarının işlenmesi bu nedenle yurt dışına veri aktarımı kapsamında değerlendirilir. Aktarımın hukuki dayanağı ve saklama süresi, hukuki inceleme sonrasında bu bölümde belirtilecektir.",
+    "contactHeading": "Başvuru",
+    "contactBody": "Kişisel verilerinize ilişkin taleplerinizi, aşağıda belirtilen posta adresimize yazılı olarak iletebilirsiniz. Ayrıntılı bilgi için KVKK Aydınlatma Metni bölümüne bakınız."
+  },
+  "DataProtectionText": {
+    "controllerIntro": "6698 sayılı Kişisel Verilerin Korunması Kanunu uyarınca veri sorumlusu, Veltrex Teknoloji ve Ticaret Anonim Şirketidir. Bu metin taslak niteliğindedir ve yayına alınmadan önce hukuki incelemeden geçecektir.",
+    "dataHeading": "İşlenen kişisel veriler",
+    "dataBody": "Bu sitede form bulunmadığı için tarafınızca doldurulan bir alan yoktur. Ancak siteyi görüntülediğinizde barındırma altyapısı tarafından tutulan sunucu kayıtları IP adresinizi, istek zamanını ve tarayıcı bilgisini içerir. IP adresi kişisel veri niteliğindedir.",
+    "purposeHeading": "İşleme amacı",
+    "purposeBody": "Sunucu kayıtları yalnızca sitenin güvenliğini ve sürekliliğini sağlamak, hata ayıklamak ve kötüye kullanımı önlemek amacıyla tutulur. Pazarlama, profilleme veya reklam amacıyla kullanılmaz.",
+    "transferHeading": "Yurt dışına aktarım",
+    "transferBody": "Barındırma hizmeti yurt dışında konumlanmış sunucular üzerinden sağlandığından, sunucu kayıtları yurt dışına aktarılmaktadır. Aktarımın Kanunun 9. maddesi kapsamındaki dayanağı hukuki inceleme sonrasında bu bölümde açıkça belirtilecektir.",
+    "rightsHeading": "Haklarınız",
+    "rightsBody": "Kanunun 11. maddesi uyarınca kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse buna ilişkin bilgi talep etme, işleme amacını öğrenme, yurt içinde veya yurt dışında verilerin aktarıldığı üçüncü kişileri bilme, eksik veya yanlış işlenmiş verilerin düzeltilmesini isteme ve verilerinizin silinmesini talep etme haklarına sahipsiniz.",
+    "applyHeading": "Başvuru yolu",
+    "applyBody": "Başvurularınızı, Yeşilce Mah. Yunus Emre Cad. No: 8/1, Kağıthane / İstanbul adresine yazılı olarak iletebilirsiniz. Şu aşamada yayımlanmış bir başvuru e-posta adresi bulunmadığından, tebliğ hükümleri gereği geçerli tek kanal posta adresidir."
   }
 }

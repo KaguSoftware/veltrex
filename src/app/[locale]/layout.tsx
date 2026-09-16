@@ -1,9 +1,13 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
+import { getMessages } from 'next-intl/server'
 import { Source_Serif_4, Plus_Jakarta_Sans } from 'next/font/google'
 import { routing } from '@/i18n/routing'
 import { ORG, SITE_URL } from '@/lib/site'
+import { Header } from '@/components/layout/Header'
+import { Footer } from '@/components/layout/Footer'
+import { organizationJsonLd, jsonLdString } from '@/lib/seo/jsonld'
 import './../globals.css'
 
 /*
@@ -77,16 +81,29 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
     notFound()
   }
 
+  const messages = await getMessages()
+
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${serif.variable} ${sans.variable} antialiased`}>
+        <script
+          type="application/ld+json"
+          // The documented App Router approach. Values are escaped in jsonLdString.
+          dangerouslySetInnerHTML={{ __html: jsonLdString(organizationJsonLd(locale)) }}
+        />
         {/*
-          messages={null} is load-bearing for the JS budget. Without it the
-          provider serialises the entire message catalogue into the HTML for
-          every page. Here there are no messages at all, since copy lives in the
-          server-only content layer, so null is both correct and free.
+          messages={pick(...)} rather than the whole catalogue.
+
+          Without trimming, the provider serialises EVERY message into the HTML
+          of every page, which is the single largest avoidable JS payload on the
+          site. Only LocaleSwitcher is a Client Component, so only its namespace
+          needs to cross the boundary.
         */}
-        <NextIntlClientProvider messages={null}>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider messages={{ LocaleSwitcher: messages.LocaleSwitcher }}>
+          <Header />
+          <main id="main">{children}</main>
+          <Footer />
+        </NextIntlClientProvider>
       </body>
     </html>
   )
