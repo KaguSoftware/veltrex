@@ -1,0 +1,21 @@
+# core.autocrlf is true at the SYSTEM level on the authoring machine, so without
+# this file line endings would depend on who cloned the repo. Normalise to LF in
+# the index and let checkout decide locally.
+* text=auto eol=lf
+
+# Binary, never normalise, never diff as text.
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.webp   binary
+*.ico    binary
+*.pdf    binary
+*.ttf    binary
+*.otf    binary
+*.woff   binary
+*.woff2  binary
+*.docx   binary
+*.xlsx   binary
+
+# SVG is text, but it is generated output. Keep it out of diffs to stay readable.
+*.svg    text eol=lf linguist-generated=true

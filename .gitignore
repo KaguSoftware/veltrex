@@ -1,0 +1,64 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# The scaffold ignores .env*, which would also swallow the committed template.
+!.env.example
+
+# Office documents are deliberately not tracked. Reasons, in order of weight:
+# 1. This repository is PUBLIC.
+# 2. They are never read by the build.
+# 3. They are Word binaries a non-engineer will edit, so every revision would
+#    append a permanent ~100KB blob to history that can never be removed.
+# 4. The proforma invoice is a customer-facing commercial template with a
+#    fillable IBAN field.
+# The company originals live outside the repo, in ../Veltrex-company-docs.
+# Do not remove these patterns: a future drag-and-drop would silently commit them.
+*.docx
+*.doc
+*.xls
+*.xlsx
+*.ppt
+*.pptx
+
+# Brand pipeline scratch. Generated assets under assets/brand/dist ARE committed,
+# because Vercel must never need sharp, svgo or the source PDF in order to deploy.
+/assets/brand/.cache/
