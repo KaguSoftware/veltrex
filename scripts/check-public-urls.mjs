@@ -208,7 +208,27 @@ async function run() {
     else fail(p, `expected the switcher to fall back to ${otherHome} on an unmatched path`)
   }
 
-  console.log('\n9. robots and sitemap')
+  console.log('\n9. icons attach and resolve')
+  console.log('   (it is undocumented whether an app/-level icon attaches when the root layout')
+  console.log('    sits under app/[locale]/, so this is asserted rather than assumed)')
+  {
+    const r = await body('/')
+    for (const [rel, label] of [
+      ['icon', 'favicon'],
+      ['apple-touch-icon', 'apple touch icon'],
+      ['manifest', 'web manifest'],
+    ]) {
+      if (new RegExp(`<link rel="${rel}"`, 'i').test(r.html)) ok(`/ links a ${label}`)
+      else fail('/', `no <link rel="${rel}"> in the HTML, so the ${label} is not attached`)
+    }
+    for (const p of ['/favicon.ico', '/icon.svg', '/apple-icon.png', '/manifest.webmanifest']) {
+      const h = await head(p)
+      if (h.status === 200) ok(`${p} 200`)
+      else fail(p, `expected 200, got ${h.status}`)
+    }
+  }
+
+  console.log('\n10. robots and sitemap')
   {
     const s = await body('/sitemap.xml')
     const count = (s.html.match(/<url>/g) ?? []).length

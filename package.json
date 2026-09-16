@@ -14,7 +14,9 @@
     "verify": "npm run check:dashes && npm run check:palette && npm run check:messages && npm run typecheck && npm run lint && npm run build && npm run check:prerender && npm run check:urls",
     "check:messages": "node scripts/check-messages.mjs",
     "check:prerender": "node scripts/check-prerender.mjs",
-    "brand:extract": "node tools/brand/extract-logo.mjs"
+    "brand:extract": "node tools/brand/extract-logo.mjs",
+    "brand:icons": "node tools/brand/make-icons.mjs",
+    "brand": "npm run brand:extract && npm run brand:icons"
   },
   "dependencies": {
     "next": "16.3.5",
