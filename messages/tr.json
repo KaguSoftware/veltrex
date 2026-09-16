@@ -18,12 +18,15 @@
   },
   "Home": {
     "eyebrow": "Teknoloji, Yatırım, Ticaret",
-    "title": "Üç iş kolu, tek yapı",
+    "title": "Üç iş kolu, <em>tek yapı</em>",
     "intro": "Veltrex; teknoloji, yatırım ve ticaret alanlarında faaliyet gösteren bir anonim şirkettir. Her iş kolunda kurgudan yürütmeye kadar süreçte yer alırız.",
     "divisionsHeading": "İş kollarımız",
     "divisionsIntro": "Üç alan, aynı çalışma biçimi: yapıyı kurar, sonrasında da içinde kalırız.",
     "contactHeading": "Bize ulaşın",
-    "cta": "İş kollarını görün"
+    "cta": "İş kollarını görün",
+    "allDivisions": "Tüm iş kolları",
+    "identityHeading": "Şirket bilgileri",
+    "identityIntro": "Bizimle çalışmaya başlamadan önce ihtiyaç duyacağınız resmi bilgiler."
   },
   "Divisions": {
     "title": "İş Kolları",
@@ -43,7 +46,8 @@
       "name": "Ticaret",
       "tagline": "Tedarik ve dağıtım",
       "intro": "Ticari süreçlerde tedarik, sözleşme ve teslim aşamalarını koordine ederiz."
-    }
+    },
+    "otherHeading": "Diğer iş kolları"
   },
   "About": {
     "title": "Kurumsal",
@@ -58,7 +62,8 @@
     "emailHeading": "E-posta",
     "addressHeading": "Adres",
     "mapLink": "Haritada görüntüle",
-    "divisionHint": "Hangi iş kolu ile ilgili olduğunu belirtmeniz süreci hızlandırır."
+    "divisionHint": "Hangi iş kolu ile ilgili olduğunu belirtmeniz süreci hızlandırır.",
+    "bandIntro": "Bize telefonla ya da posta adresimizden ulaşabilirsiniz."
   },
   "Footer": {
     "taxId": "Vergi No",
@@ -66,7 +71,9 @@
     "legalHeading": "Yasal",
     "privacy": "Gizlilik Politikası",
     "dataProtection": "KVKK Aydınlatma Metni",
-    "navLabel": "Alt gezinme"
+    "navLabel": "Alt gezinme",
+    "pagesHeading": "Sayfalar",
+    "contactHeading": "İletişim"
   },
   "Legal": {
     "draftBanner": "Bu metin taslaktır ve yayına alınmadan önce hukuki incelemeden geçmelidir.",
@@ -106,5 +113,11 @@
     "rightsBody": "Kanunun 11. maddesi uyarınca kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse buna ilişkin bilgi talep etme, işleme amacını öğrenme, yurt içinde veya yurt dışında verilerin aktarıldığı üçüncü kişileri bilme, eksik veya yanlış işlenmiş verilerin düzeltilmesini isteme ve verilerinizin silinmesini talep etme haklarına sahipsiniz.",
     "applyHeading": "Başvuru yolu",
     "applyBody": "Başvurularınızı, Yeşilce Mah. Yunus Emre Cad. No: 8/1, Kağıthane / İstanbul adresine yazılı olarak iletebilirsiniz. Şu aşamada yayımlanmış bir başvuru e-posta adresi bulunmadığından, tebliğ hükümleri gereği geçerli tek kanal posta adresidir."
+  },
+  "Company": {
+    "legalName": "Ticaret unvanı",
+    "taxId": "Vergi No",
+    "address": "Adres",
+    "phone": "Telefon"
   }
 }

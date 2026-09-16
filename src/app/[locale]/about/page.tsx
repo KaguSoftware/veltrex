@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
-import { SectionShell } from '@/components/ui/SectionShell'
-import { IndexRail } from '@/components/ui/IndexRail'
-import { DivisionList } from '@/components/layout/DivisionList'
+import { Band } from '@/components/ui/Band'
+import { Facade } from '@/components/facade/Facade'
+import { PageHero } from '@/components/layout/PageHero'
+import { DivisionColumns } from '@/components/layout/DivisionColumns'
+import { CompanyRegister } from '@/components/layout/CompanyRegister'
 import { alternatesFor, openGraphFor } from '@/lib/seo/alternates'
-import { ORG } from '@/lib/site'
 import type { Locale } from '@/i18n/routing'
 
 export async function generateMetadata({ params }: PageProps<'/[locale]/about'>): Promise<Metadata> {
@@ -20,46 +21,46 @@ export async function generateMetadata({ params }: PageProps<'/[locale]/about'>)
 
 export default async function AboutPage() {
   const t = await getTranslations('About')
+  const h = await getTranslations('Home')
+  const d = await getTranslations('Divisions')
 
   return (
     <>
-      <SectionShell>
-        <IndexRail rail="">
-          <h1 className="font-[family-name:var(--font-display)] text-[clamp(2.25rem,5vw,3.5rem)]">
-            {t('title')}
-          </h1>
-          <p className="mt-6 max-w-prose text-lg text-[var(--text-body)]">{t('intro')}</p>
+      <PageHero id="about-hero" facade="page" title={t('title')} intro={<p>{t('intro')}</p>} />
 
-          <dl className="mt-12 grid gap-8 border-t border-[var(--border-subtle)] pt-8 sm:grid-cols-2">
-            <div>
-              <dt className="text-sm text-[var(--text-muted)]">{t('addressHeading')}</dt>
-              <dd className="mt-2">
-                <address className="not-italic text-[var(--text-body)]">
-                  {ORG.address.street}
-                  <br />
-                  {ORG.address.district} / {ORG.address.city}
-                </address>
-                {/*
-                  Phrased as what we publish, not as a claim about how many
-                  offices exist. An earlier draft said there are no other
-                  offices, which we cannot know from one address.
-                */}
-                <p className="mt-3 max-w-prose text-sm text-[var(--text-muted)]">
-                  {t('addressNote')}
-                </p>
-              </dd>
-            </div>
-            <div>
-              <dt className="text-sm text-[var(--text-muted)]">Vergi No</dt>
-              <dd className="mt-2 text-[var(--text-body)]">{ORG.taxId}</dd>
-            </div>
-          </dl>
-        </IndexRail>
-      </SectionShell>
+      <Band tone="paper" aria-labelledby="about-identity">
+        <div className="shell band-pad grid gap-y-12 lg:grid-cols-12 lg:gap-x-8">
+          <div className="lg:col-span-4">
+            <h2 id="about-identity" className="t-display-l t-italic">
+              {h('identityHeading')}
+            </h2>
+            <p className="t-lead mt-6 max-w-[36ch]">
+              {h('identityIntro')}
+            </p>
+          </div>
+          {/*
+            The address note is phrased as what we publish, not as a claim about
+            how many offices exist. An earlier draft said there are no other
+            offices, which we cannot know from one address.
+          */}
+          <CompanyRegister addressNote={t('addressNote')} className="lg:col-span-8" />
+        </div>
+      </Band>
 
-      <SectionShell ground="sunken">
-        <DivisionList />
-      </SectionShell>
+      <Band tone="navy" className="overflow-hidden" aria-labelledby="about-divisions">
+        <Facade id="about-divisions-facade" name="statement" assemble quiet scrim="center" />
+        <div className="shell band-pad grid gap-y-14 lg:grid-cols-12 lg:gap-x-8">
+          <div className="lg:col-span-4">
+            <h2 id="about-divisions" className="t-display-l t-italic">
+              {h('divisionsHeading')}
+            </h2>
+            <p className="t-lead mt-6 max-w-[36ch]">
+              {d('intro')}
+            </p>
+          </div>
+          <DivisionColumns drawRules={false} className="lg:col-span-8" />
+        </div>
+      </Band>
     </>
   )
 }

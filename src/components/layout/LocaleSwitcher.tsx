@@ -23,7 +23,7 @@ import { publicPath } from '@/lib/paths'
  * catch that, so the known-set check below is a real guard rather than
  * defensive noise, and the URL matrix asserts the 404 case explicitly.
  */
-export function LocaleSwitcher() {
+export function LocaleSwitcher({ className = '' }: { className?: string }) {
   const pathname = usePathname()
   const locale = useLocale()
   const t = useTranslations('LocaleSwitcher')
@@ -66,7 +66,7 @@ export function LocaleSwitcher() {
        */
       lang={target}
       hrefLang={target}
-      className="text-sm text-[var(--text-link)] underline-offset-4 hover:underline"
+      className={className}
     >
       {t('switchTo')}
     </a>

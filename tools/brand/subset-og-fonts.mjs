@@ -5,7 +5,7 @@
  *
  * 1. next/font downloads woff2, and Satori (which renders ImageResponse) cannot
  *    read woff2. So the OG image needs its own font file regardless.
- * 2. The full Source Serif 4 variable TTF is about 1.2MB, and the documented
+ * 2. The full Noto Serif Display variable TTF is about 1.8MB, and the documented
  *    ImageResponse bundle cap is 500KB.
  *
  * And the reason the character set below is explicit rather than "latin":
@@ -40,25 +40,26 @@ const CHARS = [
 ].join('')
 
 /*
- * Both sources are VARIABLE fonts, and that is what dominated the size before
- * this: subsetting Source Serif 4 to 108 characters still left 320KB, because
- * the opsz and wght variation tables survive a glyph subset untouched.
+ * All sources are VARIABLE fonts, and that is what dominated the size before
+ * this: subsetting a variable serif to about a hundred characters still left
+ * over 300KB, because the variation tables survive a glyph subset untouched.
  *
  * Pinning each axis to a single value instantiates a static instance and drops
  * that machinery. The OG image only ever renders one weight per face, so
  * nothing is lost.
  */
 const FACES = [
-  { name: 'SourceSerif4', label: 'display', axes: { opsz: 60, wght: 400 } },
-  { name: 'PlusJakartaSans', label: 'body', axes: { wght: 500 } },
+  { name: 'NotoSerifDisplay', label: 'display', axes: { wdth: 100, wght: 300 } },
+  { name: 'NotoSerifDisplayItalic', label: 'display italic', axes: { wdth: 100, wght: 300 } },
+  { name: 'AlbertSans', label: 'body', axes: { wght: 500 } },
 ]
 
 /*
  * The real constraint is the documented 500KB ImageResponse bundle cap, which
- * both fonts share with the route's own code. 120KB per face keeps the pair
+ * the fonts share with the route's own code. 120KB per face keeps the set
  * near 100KB and leaves generous headroom, while still failing loudly if a
- * future font swap reintroduces variation tables (unpinned, Source Serif 4
- * subsets to 320KB rather than 71KB, which would eat most of the budget).
+ * future font swap reintroduces variation tables, which would eat most of the
+ * budget on their own.
  */
 const MAX_BYTES = 120 * 1024
 const MAX_COMBINED = 200 * 1024

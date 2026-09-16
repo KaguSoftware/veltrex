@@ -18,12 +18,15 @@
   },
   "Home": {
     "eyebrow": "Technology, Investment, Trading",
-    "title": "Three divisions, one structure",
+    "title": "Three divisions, <em>one structure</em>",
     "intro": "Veltrex is a joint stock company operating across technology, investment and trading. In each division we stay involved from structuring through to execution.",
     "divisionsHeading": "Our divisions",
-    "divisionsIntro": "Three fields, one way of working: we set up the structure, then stay inside it.",
+    "divisionsIntro": "Three fields, one way of working: we set up the structure, and we stay with it.",
     "contactHeading": "Get in touch",
-    "cta": "See the divisions"
+    "cta": "See the divisions",
+    "allDivisions": "All divisions",
+    "identityHeading": "Company details",
+    "identityIntro": "The official details you will need before working with us."
   },
   "Divisions": {
     "title": "Divisions",
@@ -43,7 +46,8 @@
       "name": "Trading",
       "tagline": "Supply and distribution",
       "intro": "We coordinate sourcing, contracting and delivery across commercial operations."
-    }
+    },
+    "otherHeading": "Other divisions"
   },
   "About": {
     "title": "About",
@@ -58,7 +62,8 @@
     "emailHeading": "Email",
     "addressHeading": "Address",
     "mapLink": "View on the map",
-    "divisionHint": "Telling us which division your enquiry concerns helps us route it faster."
+    "divisionHint": "Telling us which division your enquiry concerns helps us route it faster.",
+    "bandIntro": "You can reach us by phone or at our postal address."
   },
   "Footer": {
     "taxId": "Tax ID",
@@ -66,7 +71,9 @@
     "legalHeading": "Legal",
     "privacy": "Privacy Policy",
     "dataProtection": "Data Protection Notice",
-    "navLabel": "Footer navigation"
+    "navLabel": "Footer navigation",
+    "pagesHeading": "Pages",
+    "contactHeading": "Contact"
   },
   "Legal": {
     "draftBanner": "This text is a draft and must be reviewed by a lawyer before launch.",
@@ -106,5 +113,11 @@
     "rightsBody": "Under article 11 of the Law you have the right to learn whether your personal data is processed, to request information if it is, to learn the purpose of processing, to know the third parties to whom data is transferred in Türkiye or abroad, to request correction of incomplete or inaccurate data, and to request erasure.",
     "applyHeading": "How to apply",
     "applyBody": "You can submit requests in writing to Yeşilce Mah. Yunus Emre Cad. No: 8/1, Kağıthane / İstanbul. As no application email address is published at this stage, the postal address is the only valid channel under the applicable regulation."
+  },
+  "Company": {
+    "legalName": "Legal name",
+    "taxId": "Tax ID",
+    "address": "Address",
+    "phone": "Phone"
   }
 }

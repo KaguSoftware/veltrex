@@ -28,7 +28,23 @@ type Props = {
    * its link, so it needs an accessible name.
    */
   title?: string
+  /**
+   * Crop the viewBox to the ink. On by default: the source canvas carries about
+   * a quarter of its width as transparent padding, which made a header logo
+   * render at a fraction of its box. Off reproduces the supplied canvas exactly.
+   */
+  trim?: boolean
 }
+
+/*
+ * Ink boxes, measured from the path data of every variant (duotone and mono
+ * differ by under two units, so one box per orientation covers both). The
+ * horizontal mark spans the full height; the wordmark and tagline sit beside it.
+ */
+const INK_BOX = {
+  horizontal: '292 316 2600 680',
+  vertical: '1115 198 1208 897',
+} as const
 
 export function Logo({
   ground = 'paper',
@@ -36,6 +52,7 @@ export function Logo({
   tagline = false,
   className,
   title,
+  trim = true,
 }: Props) {
   const variant = `${orientation}-${ground === 'paper' ? 'duotone' : 'mono'}` as const
   const paths = LOGO_PATHS[variant]
@@ -47,7 +64,7 @@ export function Logo({
 
   return (
     <svg
-      viewBox={`0 0 ${w} ${h}`}
+      viewBox={trim ? INK_BOX[orientation] : `0 0 ${w} ${h}`}
       className={className}
       role={title ? 'img' : undefined}
       aria-hidden={title ? undefined : true}

@@ -65,5 +65,10 @@ next-env.d.ts
 
 # Full variable TTFs, fetched by brand:og-fonts from the typefaces' own repos.
 # Only the subset *-og.ttf files are committed, because those are what the
-# Open Graph route actually reads and they are ~97KB rather than ~1.4MB.
+# Open Graph route actually reads and they are ~84KB rather than ~4MB.
 /assets/fonts/*-full.ttf
+
+# Impeccable workflow runtime output: review screenshots (large binaries, regenerated
+# on every review) and decision page logs. Neither is read by the build.
+/.impeccable/review/
+/.impeccable/questions/

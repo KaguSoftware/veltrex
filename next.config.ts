@@ -19,6 +19,14 @@ const nextConfig: NextConfig = {
    * See src/app/[locale]/404/page.tsx for the measurements behind this.
    */
 
+  /*
+   * Off on purpose. With it on, next dev writes a managed instructions block
+   * into AGENTS.md on every start, and that block contains an em dash, which
+   * fails npm run check:dashes the moment anyone commits a working tree after
+   * running the dev server. The repository rules for agents live in CLAUDE.md.
+   */
+  agentRules: false,
+
   typescript: {
     // Never ignore build errors. Stated explicitly so nobody adds it later to
     // get past a red build.

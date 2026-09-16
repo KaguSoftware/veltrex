@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
-import { SectionShell } from '@/components/ui/SectionShell'
-import { IndexRail } from '@/components/ui/IndexRail'
-import { DirectContact } from '@/components/layout/DirectContact'
+import { Band } from '@/components/ui/Band'
+import { ButtonAnchor } from '@/components/ui/Button'
+import { PageHero } from '@/components/layout/PageHero'
+import { CompanyRegister } from '@/components/layout/CompanyRegister'
 import { alternatesFor, openGraphFor } from '@/lib/seo/alternates'
+import { ORG, formatPhone } from '@/lib/site'
 import type { Locale } from '@/i18n/routing'
 
 export async function generateMetadata({
@@ -23,14 +25,24 @@ export default async function ContactPage() {
   const t = await getTranslations('Contact')
 
   return (
-    <SectionShell>
-      <IndexRail rail="">
-        <h1 className="font-[family-name:var(--font-display)] text-[clamp(2.25rem,5vw,3.5rem)]">
-          {t('title')}
-        </h1>
-        <p className="mt-6 max-w-prose text-lg text-[var(--text-body)]">{t('intro')}</p>
-        <DirectContact className="mt-14 border-t border-[var(--border-subtle)] pt-12" />
-      </IndexRail>
-    </SectionShell>
+    <>
+      <PageHero
+        id="contact-hero"
+        facade="page"
+        title={t('title')}
+        intro={<p>{t('intro')}</p>}
+        actions={
+          <ButtonAnchor variant="solid" href={`tel:${ORG.phones[0]}`} className="tabular">
+            {formatPhone(ORG.phones[0])}
+          </ButtonAnchor>
+        }
+      />
+
+      <Band tone="paper">
+        <div className="shell band-pad">
+          <CompanyRegister />
+        </div>
+      </Band>
+    </>
   )
 }

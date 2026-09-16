@@ -27,6 +27,12 @@ Ask, in these words:
 **Current handling:** the copy asserts none of the three. It is written on structure and long-term
 involvement, so no rewrite is needed whichever way each answer lands.
 
+One follow-up in the same conversation: two lines describe staying involved after the setup stage,
+"yapıyı kurar, sonrasında da içinde kalırız" on the home page and "kurgudan yürütmeye kadar süreçte
+yer alırız" in the home introduction. Is that true of all three divisions? If not, both lines should
+be narrowed. Until then they stay at body size, and the large statement on the home page uses the
+structural line about the divisions sharing one approach instead.
+
 ## 2. Is Trading domestic, export, or a mix? BLOCKER for specificity
 
 There is a genuine contradiction in the source material and it should be resolved before the Trading

@@ -24,7 +24,7 @@ export default async function DataProtectionPage() {
   const k = await getTranslations('DataProtectionText')
 
   return (
-    <LegalPage title={t('dataProtectionTitle')}>
+    <LegalPage id="data-protection-hero" title={t('dataProtectionTitle')}>
       <p>{k('controllerIntro')}</p>
       <h2>{k('dataHeading')}</h2>
       <p>{k('dataBody')}</p>

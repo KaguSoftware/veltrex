@@ -7,6 +7,10 @@ import { useLocale } from 'next-intl'
  * catalogue. next/root-params is also unavailable in client code, which is why
  * the strings live in a literal keyed by useLocale() rather than coming from
  * the catalogue. This is the ONE place a locale-keyed literal is acceptable.
+ *
+ * It draws no facade: the geometry is computed at build time on the server, and
+ * an error screen should not pull that code into the client bundle. The ruled
+ * void ground carries the same seam angle instead.
  */
 const COPY = {
   tr: { title: 'Bir şeyler ters gitti', intro: 'Beklenmeyen bir hata oluştu.', retry: 'Tekrar deneyin' },
@@ -18,16 +22,14 @@ export default function Error({ reset }: { error: Error; reset: () => void }) {
   const t = COPY[locale]
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-6 py-24 sm:px-8">
-      <h1 className="font-[family-name:var(--font-display)] text-4xl">{t.title}</h1>
-      <p className="mt-4 text-[var(--text-body)]">{t.intro}</p>
-      <button
-        type="button"
-        onClick={reset}
-        className="mt-10 border border-[var(--border-strong)] px-6 py-3 text-sm hover:bg-[var(--surface-sunken)]"
-      >
-        {t.retry}
-      </button>
-    </div>
+    <section data-ground="void" className="band ruled-void flex min-h-[80svh] flex-col justify-end">
+      <div className="shell pb-24 pt-[calc(var(--header-height)+4rem)]">
+        <h1 className="t-display-xl rise">{t.title}</h1>
+        <p className="t-lead rise mt-6 max-w-[46ch]">{t.intro}</p>
+        <button type="button" onClick={reset} className="btn btn--ghost rise mt-10">
+          {t.retry}
+        </button>
+      </div>
+    </section>
   )
 }

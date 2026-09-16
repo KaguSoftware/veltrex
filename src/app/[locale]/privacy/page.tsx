@@ -21,7 +21,7 @@ export default async function PrivacyPage() {
   const p = await getTranslations('PrivacyText')
 
   return (
-    <LegalPage title={t('privacyTitle')}>
+    <LegalPage id="privacy-hero" title={t('privacyTitle')}>
       <p>{p('intro')}</p>
       <h2>{p('collectedHeading')}</h2>
       <p>{p('collectedBody')}</p>

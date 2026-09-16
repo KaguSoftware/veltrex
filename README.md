@@ -102,10 +102,10 @@ Open questions about the business are tracked in [CONTENT-TODO.md](./CONTENT-TOD
 
 Honest inventory, so nobody goes looking.
 
-- **No theme toggle UI.** The tokens support light and dark, and the OS
-  preference is respected, but there is no button. Adding one means a small
-  client component writing `data-theme` plus the `veltrex-theme` localStorage
-  key the tokens already read.
+- **No dark theme, on purpose.** The design is alternating navy and paper
+  bands, so the navy bands already give a dark ground and the paper bands stay
+  paper in every colour scheme. The reasoning is at the top of
+  `src/app/globals.css`.
 - **No analytics.** Deliberate: it is what keeps the site free of a cookie
   consent banner. See `CONTENT-TODO.md` item 10 before adding any.
 - **Division pages are intentionally shallow.** We do not yet know what each
