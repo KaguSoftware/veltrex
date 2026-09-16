@@ -97,3 +97,21 @@ including commit attribution, the ban on em dashes, the ban on pure black and wh
 values, Turkish casing, and the content honesty policy.
 
 Open questions about the business are tracked in [CONTENT-TODO.md](./CONTENT-TODO.md).
+
+## What is deliberately not here yet
+
+Honest inventory, so nobody goes looking.
+
+- **No theme toggle UI.** The tokens support light and dark, and the OS
+  preference is respected, but there is no button. Adding one means a small
+  client component writing `data-theme` plus the `veltrex-theme` localStorage
+  key the tokens already read.
+- **No analytics.** Deliberate: it is what keeps the site free of a cookie
+  consent banner. See `CONTENT-TODO.md` item 10 before adding any.
+- **Division pages are intentionally shallow.** We do not yet know what each
+  division concretely does, so they are written on structure and method and
+  share one layout. Depth slots into the same structure without a redesign.
+  See `CONTENT-TODO.md` items 1 and 2.
+- **Not deployed to production.** The domain is undecided, and
+  `src/lib/site.ts` throws on a production build without
+  `NEXT_PUBLIC_SITE_URL` by design. Preview deployments work today.
