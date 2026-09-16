@@ -7,7 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "check:dashes": "node scripts/check-dashes.mjs"
+    "check:dashes": "node scripts/check-dashes.mjs",
+    "check:palette": "node scripts/check-palette.mjs",
+    "check:urls": "node scripts/check-public-urls.mjs",
+    "typecheck": "tsc --noEmit",
+    "verify": "npm run check:dashes && npm run check:palette && npm run check:messages && npm run typecheck && npm run lint && npm run build && npm run check:urls",
+    "check:messages": "node scripts/check-messages.mjs"
   },
   "dependencies": {
     "next": "16.3.5",

@@ -1,0 +1,86 @@
+{
+  "Nav": {
+    "home": "Ana Sayfa",
+    "divisions": "İş Kolları",
+    "technology": "Teknoloji",
+    "investment": "Yatırım",
+    "trading": "Ticaret",
+    "about": "Kurumsal",
+    "contact": "İletişim",
+    "menuOpen": "Menüyü aç",
+    "menuClose": "Menüyü kapat",
+    "primaryLabel": "Ana gezinme",
+    "skipToContent": "İçeriğe geç"
+  },
+  "LocaleSwitcher": {
+    "label": "Dil",
+    "switchTo": "English"
+  },
+  "Home": {
+    "eyebrow": "Teknoloji, Yatırım, Ticaret",
+    "title": "Üç iş kolu, tek yapı",
+    "intro": "Veltrex; teknoloji, yatırım ve ticaret alanlarında faaliyet gösteren bir anonim şirkettir. Her iş kolunda kurgudan yürütmeye kadar süreçte yer alırız.",
+    "divisionsHeading": "İş kollarımız",
+    "divisionsIntro": "Üç alan, aynı çalışma biçimi: yapıyı kurar, sonrasında da içinde kalırız.",
+    "contactHeading": "Bize ulaşın",
+    "cta": "İş kollarını görün"
+  },
+  "Divisions": {
+    "title": "İş Kolları",
+    "intro": "Üç iş kolu birbirinden bağımsız çalışır, ancak aynı yaklaşımı paylaşır.",
+    "readMore": "Ayrıntılar",
+    "technology": {
+      "name": "Teknoloji",
+      "tagline": "Kurduğumuz sistemler",
+      "intro": "Yazılım ve altyapı tarafında tasarım, geliştirme ve devreye alma süreçlerini yürütürüz."
+    },
+    "investment": {
+      "name": "Yatırım",
+      "tagline": "Uzun vadeli yapılar",
+      "intro": "Sermaye tahsisinde yapıyı ve zamanlamayı birlikte değerlendiririz."
+    },
+    "trading": {
+      "name": "Ticaret",
+      "tagline": "Tedarik ve dağıtım",
+      "intro": "Ticari süreçlerde tedarik, sözleşme ve teslim aşamalarını koordine ederiz."
+    }
+  },
+  "About": {
+    "title": "Kurumsal",
+    "intro": "Veltrex Teknoloji ve Ticaret Anonim Şirketi, İstanbul merkezlidir.",
+    "addressHeading": "Adres",
+    "addressNote": "Bu sitede yayımladığımız tek adres Kağıthane / İstanbul adresidir."
+  },
+  "Contact": {
+    "title": "İletişim",
+    "intro": "Aşağıdaki numaralardan veya adresten bize ulaşabilirsiniz.",
+    "phoneHeading": "Telefon",
+    "emailHeading": "E-posta",
+    "addressHeading": "Adres",
+    "mapLink": "Haritada görüntüle",
+    "divisionHint": "Hangi iş kolu ile ilgili olduğunu belirtmeniz süreci hızlandırır."
+  },
+  "Footer": {
+    "taxId": "Vergi No",
+    "rights": "Tüm hakları saklıdır.",
+    "legalHeading": "Yasal",
+    "privacy": "Gizlilik Politikası",
+    "dataProtection": "KVKK Aydınlatma Metni",
+    "navLabel": "Alt gezinme"
+  },
+  "Legal": {
+    "draftBanner": "Bu metin taslaktır ve yayına alınmadan önce hukuki incelemeden geçmelidir.",
+    "privacyTitle": "Gizlilik Politikası",
+    "dataProtectionTitle": "KVKK Aydınlatma Metni"
+  },
+  "NotFound": {
+    "title": "Sayfa bulunamadı",
+    "intro": "Aradığınız sayfa taşınmış veya hiç var olmamış olabilir.",
+    "backHome": "Ana sayfaya dön"
+  },
+  "Error": {
+    "title": "Bir şeyler ters gitti",
+    "intro": "Beklenmeyen bir hata oluştu.",
+    "retry": "Tekrar deneyin"
+  }
+}

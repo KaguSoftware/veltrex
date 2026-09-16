@@ -1,26 +1,260 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * Veltrex design tokens.
+ *
+ * Two rules govern every value in this file:
+ *
+ * 1. No pure black and no pure white, anywhere, including shadows, borders,
+ *    overlays and gradient stops. Surfaces are warm off-whites, text is
+ *    navy tinted, shadows are navy tinted.
+ * 2. The two brand colours are exact and are never approximated. Navy #082358
+ *    is pinned at brand-900 and blue #0065EA at brand-600.
+ *
+ * The brand ramp is a single hue. That is not a simplification: converted to
+ * OKLCH the navy sits at hue 261.9 and the blue at 259.5, only 2.4 degrees
+ * apart, so they are a genuinely monochromatic pair. One ramp covers the whole
+ * brand, which is why each division gets its identity from a POSITION on this
+ * ramp rather than from an off-brand colour.
+ *
+ * Every contrast figure in the comments below was computed, not estimated.
+ * Re-run the numbers before introducing any new text pairing.
+ */
+
+@theme {
+  /* Brand ramp, single hue, interpolated in OKLCH. Lightness is monotonic. */
+  --color-brand-50: #f2f7ff;
+  --color-brand-100: #e3edfe;
+  --color-brand-200: #c5dafe;
+  --color-brand-300: #99bfff; /* focus ring on navy grounds: 8.08:1 */
+  --color-brand-400: #649dfe; /* body text in dark mode: 7.05:1 on --color-void */
+  --color-brand-500: #3a80f9;
+  --color-brand-600: #0065ea; /* EXACT BRAND BLUE. Large text and UI only: 4.28:1 on paper */
+  --color-brand-700: #034cbe; /* links and body-size blue on paper: 6.23:1 */
+  --color-brand-800: #02358a;
+  --color-brand-900: #082358; /* EXACT BRAND NAVY */
+  --color-brand-950: #031435;
+
+  /* Paper. Warm off-whites, never #ffffff. Navy on any of these is 12:1 or better. */
+  --color-paper-50: #fdfaf6;
+  --color-paper-100: #f9f5ef;
+  --color-paper-200: #f5efe7;
+  --color-paper-300: #f0e8df;
+
+  /* Ink. Navy tinted near blacks, never #000000, so the page reads as brand tinted. */
+  --color-ink-900: #0a1932; /* headings, 14.45:1 */
+  --color-ink-800: #082358; /* brand navy as ink, 12.44:1 */
+  --color-ink-700: #324058; /* body, 8.61:1 */
+  --color-ink-600: #4f5969; /* secondary body, 5.84:1 */
+  --color-ink-500: #565e6b; /* muted, 5.40:1 */
+
+  /*
+   * The dark ground. Grounding on a near-black navy rather than on the brand
+   * navy itself buys real headroom: it lifts brand-500 to 5.10:1 where the
+   * brand navy would leave it at 4.05:1.
+   */
+  --color-void: #050f28;
+
+  /*
+   * The brand grey from the logo tagline. Present for the logo ONLY.
+   * It measures 4.07:1 on the deepest paper, which FAILS AA for body text.
+   * Use --color-ink-500 for muted copy instead.
+   */
+  --color-brand-grey: #6d6e71;
+
+  /* Shadows, navy tinted. Never rgb(0 0 0 / x). */
+  --shadow-plate: 0 1px 2px rgb(8 35 88 / 0.06), 0 8px 24px rgb(8 35 88 / 0.08);
+  --shadow-raised: 0 2px 4px rgb(8 35 88 / 0.08), 0 16px 40px rgb(8 35 88 / 0.1);
+
+  /*
+   * The brand seam angle, measured from the logo artwork rather than chosen.
+   * The knockout gap between the two blades runs at exactly 3:5, which is
+   * 59.036 degrees from horizontal. Reusing it is what ties the layout language
+   * to the mark. See docs/decisions/0003.
+   */
+  --angle-seam: 59.036deg;
+  --ratio-seam: 0.6;
+
+  /* Layout rhythm. */
+  --spacing-rail: 12rem;
+  --spacing-shell: 5rem;
+
+  /* Motion. Reduced-motion handling is in the base layer below. */
+  --ease-brand: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --duration-fast: 140ms;
+  --duration-base: 240ms;
+  --duration-slow: 420ms;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/*
+ * Semantic roles. Defined once on :root for light, then redefined under both
+ * the OS preference and an explicit attribute so a toggle wins in both
+ * directions. No colour gets its only definition inside a media query.
+ */
+:root {
+  --surface: var(--color-paper-100);
+  --surface-raised: var(--color-paper-50);
+  --surface-sunken: var(--color-paper-200);
+  --surface-brand: var(--color-brand-900);
+
+  --text-strong: var(--color-ink-900);
+  --text-body: var(--color-ink-700);
+  --text-muted: var(--color-ink-500);
+  --text-link: var(--color-brand-700);
+  --text-on-brand: var(--color-paper-50);
+
+  --border-subtle: var(--color-paper-300);
+  --border-strong: var(--color-ink-500);
+
+  /*
+   * Focus ring. This value is the one that has to change per ground, because
+   * brand-600 on brand-900 is 2.91:1 and fails WCAG 1.4.11, which needs 3:1
+   * for a focus indicator. That failure would land in the footer, which is
+   * painted navy and holds the contact links, so it is exactly where a keyboard
+   * user needs the ring most. The [data-ground] rule below is not optional.
+   */
+  --focus-ring: var(--color-brand-700);
+  --focus-halo: var(--color-paper-50);
+
+  color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme='light']) {
+    --surface: var(--color-void);
+    --surface-raised: #0a1730;
+    --surface-sunken: #030a1c;
+    --surface-brand: var(--color-brand-900);
+
+    --text-strong: var(--color-paper-50);
+    --text-body: var(--color-paper-200);
+    --text-muted: #9aa4b8;
+    --text-link: var(--color-brand-400);
+    --text-on-brand: var(--color-paper-50);
+
+    --border-subtle: #16233d;
+    --border-strong: #2c3b57;
+
+    --focus-ring: var(--color-brand-300);
+    --focus-halo: var(--color-void);
+
+    color-scheme: dark;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+:root[data-theme='dark'] {
+  --surface: var(--color-void);
+  --surface-raised: #0a1730;
+  --surface-sunken: #030a1c;
+  --surface-brand: var(--color-brand-900);
+
+  --text-strong: var(--color-paper-50);
+  --text-body: var(--color-paper-200);
+  --text-muted: #9aa4b8;
+  --text-link: var(--color-brand-400);
+  --text-on-brand: var(--color-paper-50);
+
+  --border-subtle: #16233d;
+  --border-strong: #2c3b57;
+
+  --focus-ring: var(--color-brand-300);
+  --focus-halo: var(--color-void);
+
+  color-scheme: dark;
 }
+
+/*
+ * Any element painting the navy ground re-points the focus ring and the text
+ * roles, in both themes. Written here rather than per component so it cannot
+ * be forgotten on the one section that needed it.
+ */
+:root [data-ground='brand'],
+:root[data-theme='dark'] [data-ground='brand'] {
+  --surface: var(--color-brand-900);
+  --text-strong: var(--color-paper-50);
+  --text-body: var(--color-paper-200);
+  --text-muted: #aebbd4;
+  --text-link: var(--color-brand-300);
+  --focus-ring: var(--color-brand-300);
+  --focus-halo: var(--color-brand-900);
+  --border-subtle: #1b3164;
+}
+
+/* Per-division identity: a position on the brand ramp, never a new hue. */
+:root,
+[data-division] {
+  --division-accent: var(--color-brand-600);
+}
+[data-division='technology'] {
+  --division-accent: var(--color-brand-600);
+}
+[data-division='investment'] {
+  --division-accent: var(--color-brand-800);
+}
+[data-division='trading'] {
+  --division-accent: var(--color-brand-500);
+}
+
+@layer base {
+  body {
+    background-color: var(--surface);
+    color: var(--text-body);
+  }
+
+  /*
+   * No hyphens: auto on headings. A visible hyphen mid-word in a large display
+   * face reads as a typo, and Turkish compounds break badly. overflow-wrap is
+   * the safety net for a genuinely unbreakable string instead.
+   */
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--text-strong);
+    hyphens: none;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /*
+   * WCAG 2.2 SC 2.4.11 Focus Not Obscured. A sticky header must not cover the
+   * element that just received focus. This one line is the whole fix.
+   */
+  :focus-visible,
+  :target {
+    scroll-margin-top: calc(var(--header-height, 4rem) + 1rem);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+    /* Halo, so one of the two layers always contrasts with whatever is behind. */
+    box-shadow: 0 0 0 4px var(--focus-halo);
+  }
+
+  /* Windows High Contrast Mode discards custom rings entirely. */
+  @media (forced-colors: active) {
+    :focus-visible {
+      outline: 3px solid CanvasText;
+      box-shadow: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+
+

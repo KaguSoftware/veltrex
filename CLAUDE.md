@@ -101,8 +101,15 @@ questions. Nothing about pricing, counterparties or internal structure goes in i
 
 ## Architecture rules
 
-- `next-intl` is used as a **routing library only**. There is no message layer, no `messages/*.json`
-  and no `getTranslations`. All copy lives in the typed content layer under `src/content/`.
+- **All copy lives in `messages/<locale>.json`.** Turkish is the reference catalogue and English is
+  the translation. Read it with `useTranslations` or `getTranslations`, never by importing the JSON.
+- **Never branch on locale in a component.** No `locale === 'tr' ? ... : ...`, no `if`/`else if`
+  chains, no locale switches. If something differs per locale it is a message key, not a condition.
+  Adding a locale must be a new JSON file plus an entry in `routing.ts` and nothing else.
+- Catalogues store **natural case only**. Never store an ALL CAPS value: a pre-cased Turkish string
+  cannot be verified after the fact, because `TEKNOLOJI` is a valid uppercase of both `teknoloji` and
+  `teknolojı`. Apply uppercase with `upper()` from `src/lib/text.ts`, which is locale aware.
+  `npm run check:messages` fails the build on both a key-set mismatch and an all-caps value.
 - Do not create `src/app/layout.tsx`. Root parameters are only the dynamic segments **above** the
   root layout, so an `app/layout.tsx` would demote `[locale]` and `next/root-params` would silently
   stop resolving, which is how the locale reaches the content layer.

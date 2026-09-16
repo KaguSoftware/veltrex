@@ -1,0 +1,86 @@
+{
+  "Nav": {
+    "home": "Home",
+    "divisions": "Divisions",
+    "technology": "Technology",
+    "investment": "Investment",
+    "trading": "Trading",
+    "about": "About",
+    "contact": "Contact",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "primaryLabel": "Main navigation",
+    "skipToContent": "Skip to content"
+  },
+  "LocaleSwitcher": {
+    "label": "Language",
+    "switchTo": "Türkçe"
+  },
+  "Home": {
+    "eyebrow": "Technology, Investment, Trading",
+    "title": "Three divisions, one structure",
+    "intro": "Veltrex is a joint stock company operating across technology, investment and trading. In each division we stay involved from structuring through to execution.",
+    "divisionsHeading": "Our divisions",
+    "divisionsIntro": "Three fields, one way of working: we set up the structure, then stay inside it.",
+    "contactHeading": "Get in touch",
+    "cta": "See the divisions"
+  },
+  "Divisions": {
+    "title": "Divisions",
+    "intro": "The three divisions operate independently, but share the same approach.",
+    "readMore": "Read more",
+    "technology": {
+      "name": "Technology",
+      "tagline": "Systems we build",
+      "intro": "We handle design, development and commissioning across software and infrastructure."
+    },
+    "investment": {
+      "name": "Investment",
+      "tagline": "Structures built to last",
+      "intro": "In capital allocation we weigh the structure and the timing together."
+    },
+    "trading": {
+      "name": "Trading",
+      "tagline": "Supply and distribution",
+      "intro": "We coordinate sourcing, contracting and delivery across commercial operations."
+    }
+  },
+  "About": {
+    "title": "About",
+    "intro": "Veltrex Teknoloji ve Ticaret Anonim Şirketi is based in İstanbul.",
+    "addressHeading": "Address",
+    "addressNote": "The only address we publish on this site is Kağıthane / İstanbul."
+  },
+  "Contact": {
+    "title": "Contact",
+    "intro": "You can reach us on the numbers below, or at our address.",
+    "phoneHeading": "Phone",
+    "emailHeading": "Email",
+    "addressHeading": "Address",
+    "mapLink": "View on the map",
+    "divisionHint": "Telling us which division your enquiry concerns helps us route it faster."
+  },
+  "Footer": {
+    "taxId": "Tax ID",
+    "rights": "All rights reserved.",
+    "legalHeading": "Legal",
+    "privacy": "Privacy Policy",
+    "dataProtection": "Data Protection Notice",
+    "navLabel": "Footer navigation"
+  },
+  "Legal": {
+    "draftBanner": "This text is a draft and must be reviewed by a lawyer before launch.",
+    "privacyTitle": "Privacy Policy",
+    "dataProtectionTitle": "Data Protection Notice"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "intro": "The page you were looking for may have moved, or may never have existed.",
+    "backHome": "Back to the home page"
+  },
+  "Error": {
+    "title": "Something went wrong",
+    "intro": "An unexpected error occurred.",
+    "retry": "Try again"
+  }
+}
