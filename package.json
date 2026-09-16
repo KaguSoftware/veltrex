@@ -16,7 +16,8 @@
     "check:prerender": "node scripts/check-prerender.mjs",
     "brand:extract": "node tools/brand/extract-logo.mjs",
     "brand:icons": "node tools/brand/make-icons.mjs",
-    "brand": "npm run brand:extract && npm run brand:icons"
+    "brand": "npm run brand:extract && npm run brand:icons && npm run brand:og-fonts",
+    "brand:og-fonts": "node tools/brand/subset-og-fonts.mjs"
   },
   "dependencies": {
     "next": "16.3.5",

@@ -228,7 +228,21 @@ async function run() {
     }
   }
 
-  console.log('\n10. robots and sitemap')
+  console.log('\n10. the Open Graph image resolves in BOTH locales')
+  console.log('    (the Turkish one is the one that silently breaks: Next builds the URL from')
+  console.log('     the internal route, /tr/opengraph-image, which contains no dot and so is')
+  console.log('     NOT excluded by the generic matcher clause. English resolves either way.)')
+  for (const p of ['/tr/opengraph-image', '/en/opengraph-image']) {
+    const r = await head(p)
+    if (r.status === 200) ok(`${p} 200`)
+    else
+      fail(
+        p,
+        `expected 200, got ${r.status}${r.location ? ` -> ${r.location}` : ''}. Add the image conventions to the proxy matcher exclusions.`,
+      )
+  }
+
+  console.log('\n11. robots and sitemap')
   {
     const s = await body('/sitemap.xml')
     const count = (s.html.match(/<url>/g) ?? []).length
@@ -243,7 +257,7 @@ async function run() {
     else fail('/robots.txt', 'no Sitemap line')
   }
 
-  console.log('\n10. recorded, not asserted: cache-control on the Turkish root')
+  console.log('\n12. recorded, not asserted: cache-control on the Turkish root')
   console.log('    (absence is the documented trigger for Plan B, next-intl issue 2037)')
   {
     const r = await head('/')

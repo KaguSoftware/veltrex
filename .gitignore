@@ -62,3 +62,8 @@ next-env.d.ts
 # Brand pipeline scratch. Generated assets under assets/brand/dist ARE committed,
 # because Vercel must never need sharp, svgo or the source PDF in order to deploy.
 /assets/brand/.cache/
+
+# Full variable TTFs, fetched by brand:og-fonts from the typefaces' own repos.
+# Only the subset *-og.ttf files are committed, because those are what the
+# Open Graph route actually reads and they are ~97KB rather than ~1.4MB.
+/assets/fonts/*-full.ttf
