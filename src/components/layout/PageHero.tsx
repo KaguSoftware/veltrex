@@ -1,10 +1,6 @@
 import type { CSSProperties, ReactNode } from 'react'
-import { getLocale, getTranslations } from 'next-intl/server'
-import type { Locale } from '@/i18n/routing'
 import { Facade } from '@/components/facade/Facade'
 import type { FacadeName } from '@/components/facade/geometry'
-import { ORG } from '@/lib/site'
-import { upper } from '@/lib/text'
 
 type Props = {
   /** Unique on the page; namespaces the facade's gradient ids. */
@@ -15,9 +11,12 @@ type Props = {
   actions?: ReactNode
   /** Run the near tower's lit edge through the fold of the header logo. */
   anchor?: boolean
+  /** Lit panes jump along the floors and columns of the building. */
+  runners?: boolean
   /** full: the home page. tall: section landings. compact: reading pages. */
   size?: 'full' | 'tall' | 'compact'
-  plaque?: boolean
+  /** Content ruled off along the foot of the band, under the headline. */
+  foot?: ReactNode
 }
 
 const delay = (ms: number) => ({ '--delay': `${ms}ms` }) as CSSProperties
@@ -33,17 +32,18 @@ const heights = {
  * the top padding clears the header height.
  *
  * Its entrance is CSS only and plays on first paint: the towers slide along
- * the seam, the headline rises, the rule draws down, the plaque rules across.
+ * the seam, the headline rises, the rules draw.
  */
-export async function PageHero({
+export function PageHero({
   id,
   facade,
   title,
   intro,
   actions,
   anchor = false,
+  runners = false,
   size = 'tall',
-  plaque = false,
+  foot,
 }: Props) {
   const hasAside = Boolean(intro || actions)
 
@@ -54,14 +54,13 @@ export async function PageHero({
         name={facade}
         intro
         anchor={anchor}
+        runners={runners}
         scrim={size === 'compact' ? 'bottom' : 'left'}
         quiet={size === 'compact'}
       />
 
       <div className="shell flex flex-1 flex-col pt-[calc(var(--header-height)+2.5rem)]">
-        <div
-          className={`flex flex-1 flex-col justify-end ${plaque ? 'pb-12 lg:pb-16' : 'pb-16 lg:pb-24'}`}
-        >
+        <div className={`flex flex-1 flex-col justify-end ${foot ? 'pb-14 lg:pb-20' : 'pb-16 lg:pb-24'}`}>
           <div className="grid gap-y-10 lg:grid-cols-12 lg:items-end lg:gap-x-8">
             <h1 className={`t-display-xl rise ${hasAside ? 'lg:col-span-7' : 'lg:col-span-10'}`} style={delay(120)}>
               {title}
@@ -85,36 +84,15 @@ export async function PageHero({
           </div>
         </div>
 
-        {plaque ? <Plaque /> : null}
+        {foot ? (
+          <div className="pb-10 lg:pb-14">
+            <span aria-hidden="true" className="rule-h draw-x" style={delay(600)} />
+            <div className="rise pt-8 md:pt-10" style={delay(700)}>
+              {foot}
+            </div>
+          </div>
+        ) : null}
       </div>
     </section>
-  )
-}
-
-/**
- * The registered identity along the foot of the home hero, the way a tower
- * lobby carries its occupant's plaque. For a visitor checking whether this is
- * a real company, it is the first answer, before any scrolling.
- *
- * Every item is uppercased at render time with the locale-aware helper, never
- * with text-transform, which breaks the Turkish dotted capital outside Firefox.
- */
-async function Plaque() {
-  const locale = (await getLocale()) as Locale
-  const t = await getTranslations('Home')
-  const c = await getTranslations('Company')
-
-  return (
-    <div className="pb-6">
-      <span aria-hidden="true" className="rule-h draw-x" style={delay(700)} />
-      <ul className="plaque rise pt-5" style={delay(820)}>
-        <li>{ORG.legalName}</li>
-        <li className="hidden md:block">{upper(t('eyebrow'), locale)}</li>
-        <li className="hidden sm:block">{upper(`${ORG.address.district} / ${ORG.address.city}`, locale)}</li>
-        <li className="tabular hidden lg:block">
-          {upper(c('taxId'), locale)} {ORG.taxId}
-        </li>
-      </ul>
-    </div>
   )
 }

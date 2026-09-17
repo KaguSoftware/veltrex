@@ -13,7 +13,7 @@
       "brand-200": { "role": "secondary", "displayName": "Division Lit: Investment", "canonical": "#c5dafe" },
       "brand-950": { "role": "secondary", "displayName": "Facade Sky", "canonical": "#031435" },
       "brand-100": { "role": "secondary", "displayName": "Lit Tower Edge", "canonical": "#e3edfe" },
-      "brand-800": { "role": "secondary", "displayName": "Scrollbar Thumb", "canonical": "#02358a" },
+      "brand-800": { "role": "secondary", "displayName": "Deep Brand Blue", "canonical": "#02358a" },
       "void": { "role": "neutral", "displayName": "Void", "canonical": "#050f28" },
       "paper-50": { "role": "neutral", "displayName": "Lifted Paper", "canonical": "#fdfaf6", "tonalRamp": ["#ddd3c6", "#f0e8df", "#f5efe7", "#f9f5ef", "#fdfaf6"] },
       "paper-100": { "role": "neutral", "displayName": "Warm Paper", "canonical": "#f9f5ef", "tonalRamp": ["#ddd3c6", "#f0e8df", "#f5efe7", "#f9f5ef", "#fdfaf6"] },
@@ -28,7 +28,7 @@
       "brand-grey": { "role": "neutral", "displayName": "Tagline Grey (logo only)", "canonical": "#6d6e71" }
     },
     "typographyMeta": {
-      "display-xl": { "displayName": "Display XL", "purpose": "Page hero headlines only; italic phrase takes the ground's accent colour." },
+      "display-xl": { "displayName": "Display XL", "purpose": "Page hero headlines only, in one colour, at weight 400." },
       "display-l": { "displayName": "Display L", "purpose": "Band headings set italic, division names in rows, the centred navy statement." },
       "display-m": { "displayName": "Display M", "purpose": "Secondary band headings, italic." },
       "display-s": { "displayName": "Display S", "purpose": "Division column names." },
@@ -36,7 +36,6 @@
       "body": { "displayName": "Body", "purpose": "All running text; legal prose at 1.75 line height and 68ch." },
       "button": { "displayName": "Button", "purpose": "Solid and ghost button labels." },
       "label": { "displayName": "Label", "purpose": "Register term labels and footer column headings, natural case, muted." },
-      "plaque": { "displayName": "Plaque", "purpose": "Home hero identity strip only; uppercased with the locale aware helper, never CSS." },
       "menu": { "displayName": "Menu", "purpose": "Small screen menu page rows; the current page turns italic in brand-300." },
       "menu-sub": { "displayName": "Menu Sub", "purpose": "Division names under their parent row in the small screen menu, with a muted tagline." },
       "menu-phone": { "displayName": "Menu Phone", "purpose": "Phone numbers at the foot of the small screen menu." },
@@ -49,24 +48,25 @@
       { "name": "focus-ring", "value": "outline: 2px solid var(--focus-ring); outline-offset: 3px; box-shadow: 0 0 0 5px var(--focus-halo)", "purpose": "Paper: brand-700 ring, paper-50 halo. Navy and void: brand-300 ring, ground coloured halo. Forced colours: 3px CanvasText." }
     ],
     "geometry": [
-      { "name": "angle-seam", "value": "59.036deg", "purpose": "The logo's 3:5 fold slope. Mullions, menu ruling, sheen." },
-      { "name": "skew-seam", "value": "30.964deg", "purpose": "skewX applied to button and row hover sweeps." },
+      { "name": "angle-seam", "value": "59.036deg", "purpose": "The logo's 3:5 fold slope. Mullions, menu ruling, runner lanes." },
+      { "name": "skew-seam", "value": "30.964deg", "purpose": "skewX applied to button hover sweeps." },
       { "name": "seam-vector", "value": "(0.5145, 0.8575)", "purpose": "Direction of tower entrance and drift translations." },
       { "name": "anchor", "value": "ANCHOR_LEAD 800, ANCHOR_WIDTH 3600 drawing units; layer width 360cqh", "purpose": "Runs the home hero's near tower lit edge through the header logo fold at every width." }
     ],
     "motion": [
       { "name": "ease-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Default for sweeps, draws, rises and state transitions." },
-      { "name": "ease-inout", "value": "cubic-bezier(0.65, 0, 0.35, 1)", "purpose": "Facade panes lighting and the sheen pass." },
+      { "name": "ease-inout", "value": "cubic-bezier(0.65, 0, 0.35, 1)", "purpose": "Facade panes lighting." },
       { "name": "button-sweep", "value": "transform 620ms ease-expo; color and border 360ms", "purpose": "Button hover and focus fill." },
-      { "name": "row-sweep", "value": "transform 760ms ease-expo; color 420ms; copy translate 1.25rem", "purpose": "Division row hover and focus fill." },
       { "name": "link-draw", "value": "background-size 520ms ease-expo", "purpose": "Underline drawn from the left." },
-      { "name": "hero-rise", "value": "1.4s ease-expo, delays 120ms headline, 380ms intro, 560ms actions, 820ms plaque", "purpose": "Above the fold text entrance, CSS only." },
-      { "name": "hero-draw", "value": "1.8s ease-expo, 520ms column rule, 700ms plaque rule", "purpose": "Above the fold rule entrance." },
-      { "name": "facade-assembly", "value": "towers 2.1s, mullions 2.6s at 150ms, floors 2.8s at 450ms, panes 1.8s at 900ms, sheen 3.4s at 1.3s", "purpose": "Hero facade on first paint; band facades when in view." },
+      { "name": "hero-rise", "value": "1.4s ease-expo, delays 120ms headline, 380ms intro, 560ms actions, 700ms home foot columns", "purpose": "Above the fold text entrance, CSS only." },
+      { "name": "hero-draw", "value": "1.8s ease-expo, 520ms column rule, 600ms home foot rule", "purpose": "Above the fold rule entrance." },
+      { "name": "facade-assembly", "value": "towers 2.1s, mullions 2.6s at 150ms, floors 2.8s at 450ms, panes 1.8s at 900ms", "purpose": "Hero facade on first paint; band facades when in view." },
+      { "name": "facade-runners", "value": "6000ms cycle, 66ms step, step-end, from 2600ms; 14 lanes on the far tower", "purpose": "Home hero only: panes light one after another along a floor or down a bay, with a two step tail. Paused off screen, not drawn under reduced motion." },
       { "name": "facade-drift", "value": "near 7vh, far 4vh along the seam on view()", "purpose": "Scroll parallax of tower planes." },
       { "name": "reveal-rule-y", "value": "scale 1600ms ease-expo, stagger 140ms", "purpose": "Below the fold: column rules draw down." },
       { "name": "reveal-row", "value": "scale 1400ms ease-expo, stagger 140ms", "purpose": "Below the fold: row hairlines draw across." },
-      { "name": "header-solid", "value": "scroll(root) over 0 to 32vh", "purpose": "Header turns from transparent to solid void." }
+      { "name": "header-solid", "value": "scroll(root) over 0 to 32vh", "purpose": "Header turns from transparent to solid void." },
+      { "name": "scrollbar", "value": "0.75rem void gutter, square brand-600 thumb inset 3px, hover brand-400, active brand-300", "purpose": "Custom page and menu scrollbar; Firefox gets the colours through scrollbar-color." }
     ],
     "breakpoints": [
       { "name": "sm", "value": "40rem" },
@@ -104,7 +104,7 @@
       "name": "Division Row",
       "kind": "custom",
       "refersTo": "division-row",
-      "description": "Full width division row; fills navy along the seam on hover and flips every text role.",
+      "description": "Full width static division row: Display L name beside the short intro under a strong hairline. Links nowhere and has no hover state.",
       "html": "<ul class=\"ds-rows\"><li><a class=\"ds-row\" href=\"#\"><span class=\"ds-row-name\">Yatırım</span><span class=\"ds-row-mid\"><span class=\"ds-row-tag\">Uzun vadeli yapılar</span><span class=\"ds-row-intro\">Sermaye tahsisinde yapıyı ve zamanlamayı birlikte değerlendiririz.</span></span><span class=\"ds-row-more\">Ayrıntılar</span></a></li></ul>",
       "css": ".ds-rows { list-style: none; margin: 0; padding: 0 2rem; background: var(--color-paper-100, #f9f5ef); border-top: 1px solid var(--color-brand-900, #082358); } .ds-rows li { border-bottom: 1px solid var(--color-brand-900, #082358); } .ds-row { position: relative; isolation: isolate; overflow: hidden; display: grid; grid-template-columns: 5fr 5fr 2fr; gap: 2rem; align-items: center; padding: 3.5rem 0; text-decoration: none; --t-strong: var(--color-ink-900, #0a1932); --t-body: var(--color-ink-700, #324058); --t-accent: var(--color-brand-700, #034cbe); } .ds-row::before { content: ''; position: absolute; inset: 0 -40%; z-index: -1; background: var(--color-brand-900, #082358); transform: translateX(-101%) skewX(30.964deg); transition: transform 760ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-row:hover, .ds-row:focus-visible { --t-strong: var(--color-paper-50, #fdfaf6); --t-body: var(--color-mist-100, #e6e9f0); --t-accent: var(--color-brand-300, #99bfff); } .ds-row:hover::before, .ds-row:focus-visible::before { transform: translateX(0) skewX(30.964deg); } .ds-row > * { transition: color 420ms cubic-bezier(0.16, 1, 0.3, 1), translate 760ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-row:hover > * { translate: 1.25rem 0; } .ds-row:hover > :last-child { translate: -1.5rem 0; } .ds-row-name { font-family: 'Noto Serif Display', Georgia, serif; font-weight: 300; font-size: 4rem; line-height: 1.03; color: var(--t-strong); } .ds-row-tag { display: block; font-family: 'Noto Serif Display', Georgia, serif; font-style: italic; font-size: 1.625rem; color: var(--t-accent); } .ds-row-intro { display: block; margin-top: 0.75rem; font-family: 'Albert Sans', system-ui, sans-serif; color: var(--t-body); } .ds-row-more { justify-self: end; font-family: 'Albert Sans', system-ui, sans-serif; font-weight: 500; color: var(--t-accent); } .ds-row, .ds-row * { transition-property: color, translate; }"
     },
@@ -114,7 +114,7 @@
       "refersTo": "site-header",
       "description": "Void header with nav items split by hairline separators and drawn underlines; language switcher in the link colour.",
       "html": "<nav class=\"ds-nav\"><ul><li><a href=\"#\" aria-current=\"page\">İş Kolları</a></li><li><a href=\"#\">Kurumsal</a></li><li><a href=\"#\">İletişim</a></li><li><a class=\"ds-nav-lang\" href=\"#\" lang=\"en\" hreflang=\"en\">English</a></li></ul></nav>",
-      "css": ".ds-nav { background: var(--color-void, #050f28); height: 5.25rem; display: flex; align-items: center; justify-content: flex-end; padding: 0 2rem; border-bottom: 1px solid rgb(174 187 212 / 0.14); } .ds-nav ul { display: flex; list-style: none; margin: 0; padding: 0; } .ds-nav li { padding: 0 1.5rem; } .ds-nav li + li { border-left: 1px solid rgb(174 187 212 / 0.28); } .ds-nav a { font-family: 'Albert Sans', system-ui, sans-serif; font-size: 0.9375rem; color: var(--color-paper-50, #fdfaf6); text-decoration: none; background-image: linear-gradient(currentColor, currentColor); background-position: 0 100%; background-repeat: no-repeat; background-size: 0 1px; padding: 0.25rem 0; transition: background-size 520ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-nav a:hover, .ds-nav a:focus-visible, .ds-nav a[aria-current='page'] { background-size: 100% 1px; } .ds-nav a.ds-nav-lang { color: var(--color-brand-300, #99bfff); } .ds-nav a:focus-visible { outline: 2px solid var(--color-brand-300, #99bfff); outline-offset: 3px; box-shadow: 0 0 0 5px var(--color-void, #050f28); }"
+      "css": ".ds-nav { background: var(--color-void, #050f28); height: 4.5rem; display: flex; align-items: center; justify-content: flex-end; padding: 0 2rem; border-bottom: 1px solid rgb(174 187 212 / 0.14); } .ds-nav ul { display: flex; list-style: none; margin: 0; padding: 0; } .ds-nav li { padding: 0 1.5rem; } .ds-nav li + li { border-left: 1px solid rgb(174 187 212 / 0.28); } .ds-nav a { font-family: 'Albert Sans', system-ui, sans-serif; font-size: 0.9375rem; color: var(--color-paper-50, #fdfaf6); text-decoration: none; background-image: linear-gradient(currentColor, currentColor); background-position: 0 100%; background-repeat: no-repeat; background-size: 0 1px; padding: 0.25rem 0; transition: background-size 520ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-nav a:hover, .ds-nav a:focus-visible, .ds-nav a[aria-current='page'] { background-size: 100% 1px; } .ds-nav a.ds-nav-lang { color: var(--color-brand-300, #99bfff); } .ds-nav a:focus-visible { outline: 2px solid var(--color-brand-300, #99bfff); outline-offset: 3px; box-shadow: 0 0 0 5px var(--color-void, #050f28); }"
     },
     {
       "name": "Company Register",
@@ -123,14 +123,6 @@
       "description": "Ruled register of the registered identity; unknown identifiers are omitted, never placeholders.",
       "html": "<dl class=\"ds-reg\"><div><dt>Telefon</dt><dd class=\"ds-reg-phone\">+90 212 300 99 99</dd></div><div><dt>Vergi No</dt><dd class=\"ds-reg-num\">4111039736</dd></div></dl>",
       "css": ".ds-reg { margin: 0; padding: 0 2rem; background: var(--color-paper-100, #f9f5ef); border-top: 1px solid var(--color-brand-900, #082358); } .ds-reg > div { display: grid; grid-template-columns: 3fr 9fr; gap: 2rem; padding: 2rem 0; border-bottom: 1px solid var(--color-paper-400, #ddd3c6); } .ds-reg dt { font-family: 'Albert Sans', system-ui, sans-serif; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.02em; color: var(--color-ink-500, #565e6b); padding-top: 0.25rem; } .ds-reg dd { margin: 0; font-family: 'Albert Sans', system-ui, sans-serif; font-size: 1.125rem; color: var(--color-ink-900, #0a1932); font-variant-numeric: tabular-nums; } .ds-reg-phone { font-family: 'Noto Serif Display', Georgia, serif !important; font-weight: 300; font-size: 2.5rem !important; line-height: 1.3; }"
-    },
-    {
-      "name": "Hero Plaque",
-      "kind": "custom",
-      "refersTo": "plaque",
-      "description": "Home hero foot strip: registered identity in small tracked capitals split by hairlines. Uppercased in the content layer with the locale aware helper.",
-      "html": "<div class=\"ds-plaque-wrap\"><span class=\"ds-plaque-rule\"></span><ul class=\"ds-plaque\"><li>VELTREX TEKNOLOJİ VE TİCARET ANONİM ŞİRKETİ</li><li>KAĞITHANE / İSTANBUL</li><li>VERGİ NO 4111039736</li></ul></div>",
-      "css": ".ds-plaque-wrap { background: var(--color-brand-900, #082358); padding: 2rem; } .ds-plaque-rule { display: block; height: 1px; background: rgb(174 187 212 / 0.2); } .ds-plaque { display: flex; flex-wrap: wrap; list-style: none; margin: 0; padding: 1.25rem 0 0; font-family: 'Albert Sans', system-ui, sans-serif; font-size: 0.75rem; line-height: 1.4; letter-spacing: 0.08em; color: var(--color-mist-300, #aebbd4); font-variant-numeric: tabular-nums; } .ds-plaque li { padding: 0 1.25rem; } .ds-plaque li:first-child { padding-left: 0; } .ds-plaque li + li { border-left: 1px solid rgb(174 187 212 / 0.3); }"
     },
     {
       "name": "Arrow Link",
@@ -143,21 +135,21 @@
   ],
   "narrative": {
     "northStar": "The Drawn Curtain Wall",
-    "overview": "The site stands as a building facade drawn in hairlines. Deep navy bands carry an inline SVG curtain wall of mullions, floor lines and glass panes, all running at the one angle the company owns: the knockout seam of its logo, measured at 3:5, or 59.036 degrees from horizontal. Warm paper bands carry the reading. The two alternate down every page the way glass alternates with slab, and the footer closes on the deepest void ground.\n\nDensity is low and deliberate. Headlines are set large in a light serif with an italic accent, columns are split by vertical hairline rules rather than boxed, and the registered identity of the company is laid out as a ruled register, the way it reads on the company's own documents. Nothing is photographed; the building is computed at build time from the mark's geometry, so the imagery belongs to Veltrex rather than to a stock library. Every corner is square because the mark is all straight edges and one hard fold.\n\nMotion is the building's own material moving. Above the fold the hero assembles in pure CSS; below the fold nothing fades and nothing starts hidden, only rules and facades draw. Reduced motion, print and no script all render the page complete.",
+    "overview": "The site stands as a building facade drawn in hairlines. Deep navy bands carry an inline SVG curtain wall of mullions, floor lines and glass panes, all running at the one angle the company owns: the knockout seam of its logo, measured at 3:5, or 59.036 degrees from horizontal. Warm paper bands carry the reading. The two alternate down every page the way glass alternates with slab, and the footer closes on the deepest void ground.\n\nDensity is low and deliberate. Headlines are set large in a serif, in one colour, columns are split by vertical hairline rules rather than boxed, and the registered identity of the company is laid out as a ruled register, the way it reads on the company's own documents. Nothing is photographed; the building is computed at build time from the mark's geometry, so the imagery belongs to Veltrex rather than to a stock library. Every corner is square because the mark is all straight edges and one hard fold.\n\nMotion is the building's own material moving. Above the fold the hero assembles in pure CSS; below the fold nothing fades and nothing starts hidden, only rules and facades draw. Reduced motion, print and no script all render the page complete.",
     "keyCharacteristics": [
       "Alternating navy facade bands and warm paper reading bands, void footer.",
-      "One angle everywhere: mullions, button sweeps, row fills, menu ruling and tower motion run along the 59.036 degree seam.",
-      "Light serif display with italic accents over a quiet humanist sans.",
+      "One angle everywhere: mullions, button sweeps, runner lanes, menu ruling and tower motion run along the 59.036 degree seam.",
+      "Serif display in one colour per headline over a quiet humanist sans.",
       "Hairline rules instead of containers; square corners; flat surfaces.",
       "Brand blue is scarce: the mark, one solid action per view, live accents.",
-      "Registered identity rendered as a plaque and a ruled register, with unknown identifiers structurally absent."
+      "Registered identity rendered as a ruled register, with unknown identifiers structurally absent."
     ],
     "rules": [
       { "name": "The Scarce Blue Rule", "body": "Brand blue appears only in the mark, the one solid primary action per view and live accents. Links on paper are brand-700; links on navy are brand-300. Ramp 400 is the lowest step ever allowed as text on navy.", "section": "colors" },
       { "name": "The One World Rule", "body": "There is no dark theme. Under a dark colour scheme paper bands stay paper, because the alternation is the design; the navy bands already give dark scheme visitors their dark ground. Navy and void grounds re-point every text, rule, ghost and focus role through the ground attribute, so a component never needs to know which band it sits in, and colour scheme is declared per ground.", "section": "colors" },
       { "name": "The Tinted Extremes Rule", "body": "No pure black and no pure white as a design value, including shadows, borders, overlays, scrims and gradient stops. The extremes are void and paper-50; translucent overlays are built from void, mist or brand-100 channels.", "section": "colors" },
       { "name": "The Ground Contrast Rule", "body": "Every text pairing and focus ring is computed against the ground it sits on before it ships. The focus ring is brand-700 with a paper-50 halo on paper, and brand-300 with a navy or void halo on dark grounds.", "section": "colors" },
-      { "name": "The Italic Accent Rule", "body": "Emphasis in display type is italic in the same light weight, never bold and never a new colour outside the accent role.", "section": "typography" },
+      { "name": "The One Colour Headline Rule", "body": "A headline is one colour. Never set one phrase in the text colour and the next in an accent colour. Emphasis in display type, where there is any, is italic, never bold.", "section": "typography" },
       { "name": "The Locale Case Rule", "body": "Uppercase is applied to strings at render time with the locale aware helper built on toLocaleUpperCase. Never CSS text transform on Turkish text, and never an all caps value in a message catalogue.", "section": "typography" },
       { "name": "The Tabular Figures Rule", "body": "Phone numbers and registry identifiers use tabular numerals.", "section": "typography" },
       { "name": "The Anchored Seam Rule", "body": "On the home hero the facade is sized by height and slid sideways so the near tower's lit edge passes exactly through the fold of the header logo at every viewport width. The drawing is 3600 units wide with 800 units to the left of that edge, and the stylesheet offset reads the same logo height, header height and gutter. Change any of them together.", "section": "layout" },

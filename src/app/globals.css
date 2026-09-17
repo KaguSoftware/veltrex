@@ -86,16 +86,14 @@
  * has to know which band it sits in.
  */
 :root {
-  --header-height: 5.25rem;
+  --header-height: 4.5rem;
 
   /*
-   * The header lockup height. The mono fold gap stops resolving below roughly
-   * 48px, so this is 48px wherever there is room. The facade anchor and the
-   * nav alignment both read it.
+   * The header lockup height. The mark spans the full height of the lockup
+   * while the wordmark sits in its top third, so a tall lockup makes a tall
+   * header with the nav stranded against the mark. The facade anchor reads it.
    */
-  --logo-h: 2.5rem;
-  /* Centre line of the VELTREX wordmark, which sits in the top part of the lockup. */
-  --wordmark-mid: calc((var(--header-height) - var(--logo-h)) / 2 + var(--logo-h) * 0.187);
+  --logo-h: 2rem;
 
   --surface: var(--color-paper-100);
   --surface-deep: var(--color-paper-200);
@@ -159,7 +157,7 @@
 
 @media (min-width: 40rem) {
   :root {
-    --logo-h: 3rem;
+    --logo-h: 2.25rem;
   }
 }
 
@@ -183,8 +181,57 @@
 @layer base {
   html {
     background-color: var(--color-void);
-    scrollbar-color: var(--color-brand-800) var(--color-paper-300);
     -webkit-text-size-adjust: 100%;
+  }
+
+  /*
+   * The scrollbar is a piece of the building: a void gutter, the ground of the
+   * header and footer that open and close every page, with a square blue slab
+   * riding in it. The only scrolling surfaces are the page and the small screen
+   * menu, both of which sit on void, so one set of values serves both.
+   *
+   * The slab is inset from the gutter by a border in the gutter colour, so it
+   * reads as a pane set in a frame rather than a bar touching the window edge.
+   * Brand blue on void is 3.7:1, above the 3:1 WCAG 1.4.11 asks of a control.
+   *
+   * Chromium ignores every ::-webkit-scrollbar rule once scrollbar-color is set
+   * anywhere, so the standard properties are given only to engines without the
+   * pseudo-elements, which today means Firefox. It gets the same colours with no
+   * control over shape.
+   */
+  ::-webkit-scrollbar {
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: var(--color-void);
+  }
+  ::-webkit-scrollbar-track {
+    background-color: var(--color-void);
+    border-inline-start: 1px solid rgb(174 187 212 / 0.14);
+  }
+  ::-webkit-scrollbar-thumb {
+    min-height: 3rem;
+    background-color: var(--color-brand-600);
+    background-clip: padding-box;
+    border: 3px solid transparent;
+    border-radius: 0;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-brand-400);
+  }
+  ::-webkit-scrollbar-thumb:active {
+    background-color: var(--color-brand-300);
+  }
+  ::-webkit-scrollbar-button,
+  ::-webkit-scrollbar-corner {
+    display: none;
+    background-color: var(--color-void);
+  }
+  @supports not selector(::-webkit-scrollbar) {
+    html,
+    .menu-scroll {
+      scrollbar-color: var(--color-brand-600) var(--color-void);
+      scrollbar-width: thin;
+    }
   }
 
   body {
@@ -289,7 +336,9 @@
     font-weight: 300;
     color: var(--text-strong);
   }
+  /* A step heavier than the other display sizes: at 300 the hero headline read thin over the facade. */
   .t-display-xl {
+    font-weight: 400;
     font-size: clamp(3.125rem, 1.4rem + 5.2vw, 6rem);
     line-height: 1;
     letter-spacing: -0.022em;
@@ -316,10 +365,6 @@
   .t-display-s em,
   .t-italic {
     font-style: italic;
-  }
-  .t-display-xl em,
-  .t-display-l em {
-    color: var(--text-accent);
   }
 
   .t-lead {
@@ -777,33 +822,6 @@
     rotate: -45deg;
   }
 
-  /* ------------------------------------------------------------- plaque */
-
-  /*
-   * The strip along the foot of a hero: the company's registered identity,
-   * the way a tower lobby carries its occupant's plaque.
-   */
-  .plaque {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    column-gap: 0;
-    row-gap: 0.5rem;
-    font-size: 0.75rem;
-    line-height: 1.4;
-    letter-spacing: 0.08em;
-    color: var(--text-muted);
-  }
-  .plaque > li {
-    padding-inline: 1.25rem;
-  }
-  .plaque > li:first-child {
-    padding-inline-start: 0;
-  }
-  .plaque > li + li {
-    border-inline-start: 1px solid rgb(174 187 212 / 0.3);
-  }
-
   /* ------------------------------------------------------------- facade */
 
   .facade {
@@ -946,18 +964,42 @@
     background: linear-gradient(0deg, rgb(5 15 40 / 0.85) 0%, rgb(5 15 40 / 0.35) 45%, rgb(5 15 40 / 0) 80%);
   }
 
-  .facade-sheen {
-    position: absolute;
-    inset: -10% -40%;
-    pointer-events: none;
-    background: linear-gradient(
-      59.036deg,
-      transparent 43%,
-      rgb(227 237 254 / 0.07) 49%,
-      rgb(227 237 254 / 0.02) 53%,
-      transparent 58%
-    );
-    opacity: 0;
+  /*
+   * Runners: panes that light one after another along a lane, so the building
+   * reads like a chip with current in it. Each pane holds full strength for one
+   * step, drops to a dim tail for two more, then goes dark until its lane comes
+   * round again. The steps are hard cuts, never fades: a pane jumps, it does
+   * not glide.
+   *
+   * Hidden unless motion is welcome. The global reduced-motion rule would cut
+   * the loop to one frame and leave panes stranded mid-step.
+   */
+  .facade-runners {
+    display: none;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .facade-runners {
+      display: block;
+      /*
+       * The keyframes below are written for these two numbers: one step is
+       * 66ms of a 6000ms cycle, which is 1.1 percent. Change them together.
+       */
+      --run-step: 66ms;
+      --run-cycle: 6000ms;
+      /* After the towers have slid in and the glass has lit. */
+      --run-start: 2600ms;
+    }
+    /* Paler than any still pane, so a moving one reads as current rather than glass. */
+    .facade-runners rect {
+      fill: var(--color-brand-200);
+      opacity: 0;
+      animation: facade-run var(--run-cycle) step-end infinite;
+      animation-delay: calc(var(--run-start) + var(--lane) * var(--run-cycle) + var(--k) * var(--run-step));
+    }
+    /* Set by RevealObserver while the hero is scrolled out of view. */
+    .facade-runners.is-offscreen rect {
+      animation-play-state: paused;
+    }
   }
 
   /* The assembly. Towers slide along the seam, mullions draw, glass lights. */
@@ -979,9 +1021,6 @@
   .facade--intro .facade-pane,
   .facade--intro .facade-spandrel {
     animation: fade-in 1.8s var(--ease-inout) 900ms both;
-  }
-  .facade--intro .facade-sheen {
-    animation: facade-sheen 3.4s var(--ease-inout) 1.3s both;
   }
 
   /* The towers keep sliding along the seam as the band passes through view. */
@@ -1068,62 +1107,6 @@
   .js [data-reveal='facade']:not(.is-in),
   .js [data-reveal='facade']:not(.is-in) * {
     animation-play-state: paused;
-  }
-
-  /* ------------------------------------------------------- division rows */
-
-  /*
-   * A row fills with navy along the seam angle on hover, and every text role
-   * inside flips with it, so the state is unmistakable rather than a faint
-   * underline.
-   */
-  .fold-row {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    transition: color 420ms var(--ease-expo);
-  }
-  .fold-row::before {
-    content: '';
-    position: absolute;
-    inset: 0 -40%;
-    z-index: -1;
-    background-color: var(--color-brand-900);
-    transform: translateX(-101%) skewX(var(--skew-seam));
-    transition: transform 760ms var(--ease-expo);
-  }
-  .fold-row:hover,
-  .fold-row:focus-visible {
-    --text-strong: var(--color-paper-50);
-    --text-body: var(--color-mist-100);
-    --text-muted: var(--color-mist-300);
-    --text-link: var(--color-brand-300);
-    --text-accent: var(--color-brand-300);
-    --focus-ring: var(--color-brand-300);
-    --focus-halo: var(--color-brand-900);
-  }
-  .fold-row:hover::before,
-  .fold-row:focus-visible::before {
-    transform: translateX(0) skewX(var(--skew-seam));
-  }
-  .fold-row * {
-    transition: color 420ms var(--ease-expo);
-  }
-  /* The copy steps in from the fill edge rather than touching it. */
-  .fold-row > * {
-    transition:
-      color 420ms var(--ease-expo),
-      translate 760ms var(--ease-expo);
-  }
-  .fold-row:hover > *,
-  .fold-row:focus-visible > * {
-    translate: 1.25rem 0;
-  }
-  @media (min-width: 48rem) {
-    .fold-row:hover > :last-child,
-    .fold-row:focus-visible > :last-child {
-      translate: -1.5rem 0;
-    }
   }
 
   /* --------------------------------------------------------- legal prose */
@@ -1276,16 +1259,19 @@
   }
 }
 
-@keyframes facade-sheen {
+/* One step is 1.1 percent of the cycle. See .facade-runners. */
+@keyframes facade-run {
   0% {
-    opacity: 1;
-    translate: -60% 0;
+    opacity: 0.85;
   }
-  85% {
-    opacity: 1;
+  1.1% {
+    opacity: 0.35;
   }
+  2.2% {
+    opacity: 0.12;
+  }
+  3.3%,
   100% {
     opacity: 0;
-    translate: 60% 0;
   }
 }

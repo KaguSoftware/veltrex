@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import { buildFacade, FACADES, ROTATION, VIEW, type FacadeGeometry, type FacadeName } from './geometry'
 
 type Props = {
@@ -18,6 +19,12 @@ type Props = {
    * continues the seam in the mark.
    */
   anchor?: boolean
+  /**
+   * Lit panes jump along the floors and columns of any tower whose spec asks
+   * for lanes, like current through the traces of a chip. Off unless the page
+   * asks, so the motion stays with the one hero it was made for.
+   */
+  runners?: boolean
   /** Lines and panes at reduced strength, for bands where copy leads. */
   quiet?: boolean
   /** Where the legibility scrim sits. */
@@ -54,6 +61,7 @@ export function Facade({
   intro = false,
   assemble = false,
   anchor = false,
+  runners = false,
   quiet = false,
   scrim = 'left',
   className = '',
@@ -156,11 +164,34 @@ export function Facade({
                 <path className="facade-edge" d={t.edge} stroke={`url(#${id}-${side}-edge)`} />
               </g>
             </svg>
+
+            {/*
+              Its own small layer inside the plane: it rides the entrance and
+              the parallax with its tower, and each step repaints a few hundred
+              rects rather than the whole drawing.
+            */}
+            {runners && t.runs.length > 0 ? (
+              <svg
+                className={`facade-layer facade-tower facade-tower--${side} facade-runners`}
+                viewBox={viewBox}
+                preserveAspectRatio={fit}
+                focusable="false"
+              >
+                <g transform={transform}>
+                  {t.runs.map((run, i) => (
+                    <g key={i} style={{ '--lane': run.offset } as CSSProperties}>
+                      {run.cells.map((c, k) => (
+                        <rect key={k} x={c.x} y={c.y} width={c.w} height={c.h} style={{ '--k': k } as CSSProperties} />
+                      ))}
+                    </g>
+                  ))}
+                </g>
+              </svg>
+            ) : null}
           </div>
         )
       })}
 
-      {intro || assemble ? <div className="facade-sheen" /> : null}
       <div className="facade-scrim" />
     </div>
   )

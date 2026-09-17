@@ -61,6 +61,8 @@ type TowerSpec = {
   lit: number
   /** Every nth mullion is drawn heavier. */
   major: number
+  /** How many lanes of lit panes jump along this tower. Omit for a still building. */
+  runs?: number
 }
 
 export type FacadeSpec = {
@@ -83,7 +85,18 @@ export type TowerPaths = {
   spandrels: string
   panes: [string, string, string, string]
   edge: string
+  runs: Run[]
 }
+
+/** One pane, in rotated drawing space. */
+export type Cell = { x: number; y: number; w: number; h: number }
+
+/**
+ * A lane of panes that light one after another, in order: along a floor, or
+ * down one bay across successive floors. `offset` staggers the lanes against
+ * each other, as a share of the cycle from 0 to 1.
+ */
+export type Run = { offset: number; cells: Cell[] }
 
 /** The horizontal stretch of drawing space that can ever be seen. */
 export type Window = { x0: number; w: number }
@@ -109,7 +122,12 @@ function xAtTop(edge: number) {
   return CX + du * COS - dv * SIN
 }
 
-type Frame = { win: Window; extent: number }
+/**
+ * `lane` is the stretch of view space where a moving pane is worth drawing. On
+ * an anchored facade that is the part a screen actually shows beside the lit
+ * edge, not the full drawing, which runs far past both sides of any viewport.
+ */
+type Frame = { win: Window; extent: number; lane: { x0: number; x1: number; y0: number; y1: number } }
 
 function visible(frame: Frame, u: number, v: number) {
   const { x, y } = toView(u, v)
@@ -233,6 +251,7 @@ function buildTower(frame: Frame, spec: TowerSpec, edge: number, direction: 1 | 
   const body = `M${r(uMin)} ${r(CY - frame.extent)}H${r(uMax)}V${r(CY + frame.extent)}H${r(uMin)}Z`
 
   return {
+    runs: buildRuns(frame, spec, lines, firstFloor, lastFloor, seed),
     body,
     edgeFrom: edge,
     edgeTo: edge + direction * 900,
@@ -243,6 +262,83 @@ function buildTower(frame: Frame, spec: TowerSpec, edge: number, direction: 1 | 
     panes,
     edge: edgePath,
   }
+}
+
+/** Longest lane, in panes. Past this a lane outlasts its share of the cycle. */
+const RUN_CELLS = 48
+/** Shortest lane worth drawing. */
+const RUN_MIN = 8
+
+/**
+ * The lanes of lit panes that jump across a tower, the way current runs along
+ * the traces of a chip. Two in three run along a floor, the rest down one bay
+ * across successive floors, which is a line parallel to the seam. Directions
+ * alternate, like traffic. Every choice comes from the same hash as the lit
+ * panes, so a building always moves the same way.
+ */
+function buildRuns(
+  frame: Frame,
+  spec: TowerSpec,
+  lines: number[],
+  firstFloor: number,
+  lastFloor: number,
+  seed: number,
+): Run[] {
+  const count = spec.runs ?? 0
+  if (count === 0) return []
+
+  const pane = (j: number, k: number): Cell | null => {
+    if (k < 0 || k >= lines.length - 1) return null
+    const a = Math.min(lines[k], lines[k + 1])
+    const b = Math.max(lines[k], lines[k + 1])
+    if (b - a < 6) return null
+    const v = spec.phase + j * spec.floor
+    const top = v + spec.spandrel + 1.5
+    const bottom = v + spec.floor - 1.5
+    const { x, y } = toView((a + b) / 2, (top + bottom) / 2)
+    const { lane } = frame
+    if (x < lane.x0 || x > lane.x1 || y < lane.y0 || y > lane.y1) return null
+    return { x: r(a + 1.5), y: r(top), w: r(b - a - 3), h: r(bottom - top) }
+  }
+
+  const runs: Run[] = []
+  const floors = lastFloor - firstFloor + 1
+  const bays = lines.length - 1
+
+  for (let attempt = 0; runs.length < count && attempt < count * 12; attempt++) {
+    const alongFloor = hash(seed, attempt, 9000) < 0.66
+    let cells: Cell[] = []
+
+    if (alongFloor) {
+      const j = firstFloor + Math.floor(hash(seed, attempt, 9001) * floors)
+      for (let k = 0; k < bays; k++) {
+        const c = pane(j, k)
+        if (c) cells.push(c)
+        else if (cells.length > 0) break
+      }
+    } else {
+      // Bays near the sky are the widest, so a column lane stays close to it.
+      const k = Math.floor(hash(seed, attempt, 9002) * Math.min(bays, 24))
+      for (let j = firstFloor; j <= lastFloor; j++) {
+        const c = pane(j, k)
+        if (c) cells.push(c)
+        else if (cells.length > 0) break
+      }
+    }
+
+    if (cells.length < RUN_MIN) continue
+    if (cells.length > RUN_CELLS) {
+      const start = Math.floor(hash(seed, attempt, 9003) * (cells.length - RUN_CELLS))
+      cells = cells.slice(start, start + RUN_CELLS)
+    }
+    if (runs.length % 2 === 1) cells.reverse()
+
+    // Evenly spread across the cycle, with a little jitter so the rhythm never ticks.
+    const offset = (runs.length + hash(seed, attempt, 9004) * 0.4) / count
+    runs.push({ offset: Math.round(offset * 1000) / 1000, cells })
+  }
+
+  return runs
 }
 
 /**
@@ -264,7 +360,13 @@ export function buildFacade(spec: FacadeSpec, anchored = false): FacadeGeometry 
     [win.x0 + win.w, VIEW.h],
   ]
   const extent = Math.ceil(Math.max(...corners.map(([x, y]) => Math.hypot(x - CX, y - CY))) + MARGIN + 80)
-  const frame: Frame = { win, extent }
+  // An anchored drawing is scaled by height, so even a wide screen shows only
+  // about twice its height in width to the right of the lit edge. The header
+  // covers the top tenth and the hero's foot copy the bottom quarter.
+  const lane = anchored
+    ? { x0: win.x0 + ANCHOR_LEAD - 80, x1: win.x0 + ANCHOR_LEAD + 2200, y0: 90, y1: 740 }
+    : { x0: win.x0, x1: win.x0 + win.w, y0: 0, y1: VIEW.h }
+  const frame: Frame = { win, extent, lane }
 
   return {
     window: win,
@@ -285,7 +387,8 @@ export const FACADES = {
     gap: 360,
     seed: 11,
     near: { bay: 34, recede: 0.978, minBay: 8, floor: 104, spandrel: 22, phase: 8, lit: 0.42, major: 3 },
-    far: { bay: 22, recede: 0.982, minBay: 5, floor: 66, spandrel: 8, phase: 30, lit: 0.38, major: 4 },
+    // Only the far tower moves: the near one sits behind the headline.
+    far: { bay: 22, recede: 0.982, minBay: 5, floor: 66, spandrel: 8, phase: 30, lit: 0.38, major: 4, runs: 14 },
   },
   page: {
     seam: 150,

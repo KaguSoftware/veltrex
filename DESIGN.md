@@ -28,7 +28,7 @@ typography:
   display-xl:
     fontFamily: "Noto Serif Display, Iowan Old Style, Palatino Linotype, Georgia, serif"
     fontSize: "clamp(3.125rem, 1.4rem + 5.2vw, 6rem)"
-    fontWeight: 300
+    fontWeight: 400
     lineHeight: 1
     letterSpacing: "-0.022em"
   display-l:
@@ -71,12 +71,6 @@ typography:
     fontWeight: 500
     lineHeight: 1.4
     letterSpacing: "0.02em"
-  plaque:
-    fontFamily: "Albert Sans, ui-sans-serif, system-ui, Segoe UI, sans-serif"
-    fontSize: "0.75rem"
-    fontWeight: 400
-    lineHeight: 1.4
-    letterSpacing: "0.08em"
   menu:
     fontFamily: "Noto Serif Display, Iowan Old Style, Palatino Linotype, Georgia, serif"
     fontSize: "clamp(2.25rem, 1.5rem + 3.2vw, 3rem)"
@@ -106,7 +100,7 @@ spacing:
   column-gap: "2rem"
   band: "clamp(5rem, 11vw, 9.5rem)"
   band-statement: "clamp(6.5rem, 13vw, 11rem)"
-  header: "5.25rem"
+  header: "4.5rem"
   logo-sm: "2.5rem"
   logo: "3rem"
 components:
@@ -142,16 +136,10 @@ components:
     textColor: "{colors.ink-900}"
     rounded: "{rounded.none}"
     padding: "3.5rem 0"
-  division-row-hover:
-    backgroundColor: "{colors.brand-900}"
-    textColor: "{colors.paper-50}"
   site-header:
     backgroundColor: "{colors.void}"
     textColor: "{colors.paper-50}"
-    height: "5.25rem"
-  plaque:
-    textColor: "{colors.mist-300}"
-    typography: "{typography.plaque}"
+    height: "4.5rem"
   register-row:
     textColor: "{colors.ink-900}"
     padding: "2rem 0"
@@ -168,27 +156,27 @@ components:
 
 The site stands as a building facade drawn in hairlines. Deep navy bands carry an inline SVG curtain wall of mullions, floor lines and glass panes, all running at the one angle the company owns: the knockout seam of its logo, measured at 3:5, or 59.036 degrees from horizontal. Warm paper bands carry the reading. The two alternate down every page the way glass alternates with slab, and the footer closes on the deepest void ground.
 
-Density is low and deliberate. Headlines are set large in a light serif with an italic accent, columns are split by vertical hairline rules rather than boxed, and the registered identity of the company is laid out as a ruled register, the way it reads on the company's own documents. Nothing is photographed; the building is computed at build time from the mark's geometry, so the imagery belongs to Veltrex rather than to a stock library. Every corner is square because the mark is all straight edges and one hard fold.
+Density is low and deliberate. Headlines are set large in a serif, in one colour, columns are split by vertical hairline rules rather than boxed, and the registered identity of the company is laid out as a ruled register, the way it reads on the company's own documents. Nothing is photographed; the building is computed at build time from the mark's geometry, so the imagery belongs to Veltrex rather than to a stock library. Every corner is square because the mark is all straight edges and one hard fold.
 
 Motion is the building's own material moving. Above the fold the hero assembles in pure CSS; below the fold nothing fades and nothing starts hidden, only rules and facades draw. Reduced motion, print and no script all render the page complete.
 
 **Key Characteristics:**
 - Alternating navy facade bands and warm paper reading bands, void footer.
 - One angle everywhere: mullions, button sweeps, row fills, menu ruling and tower motion run along the 59.036 degree seam.
-- Light serif display with italic accents over a quiet humanist sans.
+- Serif display in one colour per headline over a quiet humanist sans.
 - Hairline rules instead of containers; square corners; flat surfaces.
 - Brand blue is scarce: the mark, one solid action per view, live accents.
-- Registered identity rendered as a plaque and a ruled register, with unknown identifiers structurally absent.
+- Registered identity rendered as a ruled register, with unknown identifiers structurally absent.
 
 ## Colors
 
 A single blue hue ramp anchored on the two exact brand colours, set against warm paper, navy tinted ink and a cool mist for text on dark grounds.
 
 ### Primary
-- **Veltrex Navy** (brand-900): the exact brand navy, pinned and never approximated. Ground of every facade band and hero, the row hover fill, the ghost button line and text on paper, the strong rule on paper, and the theme colour.
+- **Veltrex Navy** (brand-900): the exact brand navy, pinned and never approximated. Ground of every facade band and hero, the ghost button line and text on paper, the strong rule on paper, and the theme colour.
 - **Veltrex Blue** (brand-600): the exact brand blue, pinned and never approximated. The blade of the mark, the single solid primary action in a view, text selection and live accents. Paper text on it passes; as text on navy it fails outright (2.91:1), so it is never text on a dark ground.
-- **Deep Link Blue** (brand-700): links, body size blue and the italic accent on paper, the hover fill of the solid button, the focus ring on paper, and the lit core of the facade sky band.
-- **Lit Sky Blue** (brand-300): links, italic accents and the focus ring on navy and void grounds (8.08:1 on navy).
+- **Deep Link Blue** (brand-700): links and body size blue on paper, the hover fill of the solid button, the focus ring on paper, and the lit core of the facade sky band.
+- **Lit Sky Blue** (brand-300): links, the current menu row and the focus ring on navy and void grounds (8.08:1 on navy).
 
 ### Secondary
 - **Division Lit Steps** (brand-500, brand-400, brand-300, brand-200): each division tints the lit panes of its building with a different step on the one ramp. Trading takes 500, Technology 300, Investment 200, and the default is 400. A division never gets a new hue.
@@ -199,12 +187,12 @@ A single blue hue ramp anchored on the two exact brand colours, set against warm
 - **Warm Paper** (paper-100): the default reading surface.
 - **Lifted Paper** (paper-50): text on navy and void grounds, text on the solid button, the ghost fill on navy and the focus halo on paper. This is the lightest value in the system; there is no pure white.
 - **Paper Stone** (paper-400): hairline rules on paper, decorative only.
-- **Deep Paper** (paper-200, paper-300): the scrollbar track and a reserved deeper paper surface.
+- **Deep Paper** (paper-200, paper-300): the centred statement band on the home page and a reserved deeper paper surface.
 - **Night Ink** (ink-900): headings and strong text on paper.
 - **Body Ink** (ink-700): body copy on paper.
 - **Muted Ink** (ink-500): muted text on paper. The lowest ink step allowed for text on paper.
 - **Mist** (mist-100): body copy on navy and void.
-- **Soft Mist** (mist-300): muted text on navy and void, the plaque, and the base of every translucent rule on dark grounds (rules at 0.2 and 0.5 alpha, nav separators at 0.28, plaque separators at 0.3).
+- **Soft Mist** (mist-300): muted text on navy and void, and the base of every translucent rule on dark grounds (rules at 0.2 and 0.5 alpha, nav separators at 0.28).
 - **Tagline Grey** (brand-grey): the logo tagline and nothing else. It fails AA for body text on paper.
 
 ### Named Rules
@@ -218,20 +206,19 @@ A single blue hue ramp anchored on the two exact brand colours, set against warm
 
 ## Typography
 
-**Display Font:** Noto Serif Display, light with italic (with Iowan Old Style, Palatino Linotype, Georgia)
+**Display Font:** Noto Serif Display, light and regular, with italic (with Iowan Old Style, Palatino Linotype, Georgia)
 **Body Font:** Albert Sans (with ui-sans-serif, system-ui, Segoe UI)
 
-**Character:** A high contrast display serif set light and large, carrying its emphasis in italic rather than in weight, over a calm geometric humanist sans that stays out of the way. Both load the latin-ext subset, which Turkish requires.
+**Character:** A high contrast display serif set large, light for band headings and regular for the hero, carrying its emphasis in italic rather than in weight, over a calm geometric humanist sans that stays out of the way. Both load the latin-ext subset, which Turkish requires.
 
 ### Hierarchy
-- **Display XL** (300, clamp 3.125rem to 6rem, 1): page hero headlines only. The italic phrase inside takes the accent colour of the ground.
-- **Display L** (300, clamp 2.375rem to 4.75rem, 1.03): band headings, set wholly italic; division names in rows; the centred statement on a navy band.
+- **Display XL** (400, clamp 3.125rem to 6rem, 1): page hero headlines only, in one colour. A step heavier than the other display sizes, because at 300 it read thin over the facade.
+- **Display L** (300, clamp 2.375rem to 4.75rem, 1.03): band headings, set wholly italic; division names in rows; the centred statement band.
 - **Display M** (300, clamp 2rem to 3.25rem, 1.08): secondary band headings, italic.
 - **Display S** (400, clamp 1.625rem to 2.125rem, 1.15): division column names.
 - **Lead** (400, clamp 1.125rem to 1.3125rem, 1.6): the paragraph beside or under a display heading, held to 36 to 46ch.
 - **Body** (400, 1.0625rem, 1.65): all running text; legal prose at 1.75 line height and 68ch.
 - **Label** (500, 0.8125rem, 0.02em tracking, natural case): register term labels and footer column headings, in muted text.
-- **Plaque** (400, 0.75rem, 0.08em tracking, uppercase): the registered identity strip at the foot of the home hero only.
 - **Phones at display scale**: phone numbers set in the display face at light weight with tabular figures, as the contact band and register headline.
 - **Menu** (300, clamp 2.25rem to 3rem, 1.05): the small screen menu's page rows; the current page turns italic in brand-300.
 - **Menu Sub** (400, 1.375rem, 1.2): division names hanging under their parent row, each with its tagline in 0.8125rem muted text set to the end of the line.
@@ -239,7 +226,7 @@ A single blue hue ramp anchored on the two exact brand colours, set against warm
 - **Legal Heading** (400, clamp 1.5rem to 2rem, 1.2): section headings inside legal prose.
 
 ### Named Rules
-**The Italic Accent Rule.** Emphasis in display type is italic in the same light weight, never bold and never a new colour outside the accent role.
+**The One Colour Headline Rule.** A headline is one colour. Never set one phrase in the text colour and the next in an accent colour: that split is the most recognisable template tell there is. Emphasis in display type, where there is any, is italic, never bold.
 
 **The Locale Case Rule.** Uppercase is applied to strings at render time with the locale aware helper built on toLocaleUpperCase. Never CSS text transform on Turkish text, and never an all caps value in a message catalogue.
 
@@ -247,9 +234,9 @@ A single blue hue ramp anchored on the two exact brand colours, set against warm
 
 ## Layout
 
-A single centred column capped at 86rem with a fluid gutter (clamp 1.25rem to 4rem) serves every band, so all content aligns to one edge down the page. Within it a 12 column grid with a 2rem column gap takes over at the lg breakpoint (64rem); below that, content stacks. Common splits are 4 over 8 (heading and lead beside columns or a register), 7 over 5 (hero headline beside intro), and 5, 5, 2 inside a division row.
+A single centred column capped at 86rem with a fluid gutter (clamp 1.25rem to 4rem) serves every band, so all content aligns to one edge down the page. Within it a 12 column grid with a 2rem column gap takes over at the lg breakpoint (64rem); below that, content stacks. Common splits are 4 over 8 (heading and lead beside a register), 7 over 5 (hero headline beside intro), three equal columns along the foot of the home hero, and 5 over 6 inside a division row.
 
-Bands are full bleed with block padding of clamp 5rem to 9.5rem; the centred statement band runs taller. The header is fixed at 5.25rem and every hero clears it with top padding. Heroes come in three heights: full (the larger of 100svh and 44rem, home), tall (78svh or 38rem, section landings) and compact (26rem, reading pages). Hero content sits at the foot of the band, not the centre.
+Bands are full bleed with block padding of clamp 5rem to 9.5rem; the centred statement band runs taller. The header is fixed at 4.5rem and every hero clears it with top padding. Heroes come in three heights: full (the larger of 100svh and 44rem, home), tall (78svh or 38rem, section landings) and compact (26rem, reading pages). Hero content sits at the foot of the band, not the centre.
 
 The header lockup is 2.5rem tall below 40rem and 3rem above, the height at which the mono fold gap still resolves. Nav labels align to the centre line of the wordmark, not of the lockup. Layouts are never tuned to English string length; Turkish runs longer.
 
@@ -257,7 +244,7 @@ The header lockup is 2.5rem tall below 40rem and 3rem above, the height at which
 
 ## Elevation & Depth
 
-The system is flat. No surface is lifted with a shadow; depth lives inside the drawn facade, where a gradient sky, a lit seam band, two tower planes at different parallax rates, legibility scrims built from void, and a single sheen pass make the space. Hierarchy between surfaces is carried by ground (void, navy, paper) and by hairline rules. The fixed header is translucent void over the hero and turns solid as the page scrolls, on a scroll timeline.
+The system is flat. No surface is lifted with a shadow; depth lives inside the drawn facade, where a gradient sky, a lit seam band, two tower planes at different parallax rates, and legibility scrims built from void make the space. Hierarchy between surfaces is carried by ground (void, navy, paper) and by hairline rules. The fixed header is translucent void over the hero and turns solid as the page scrolls, on a scroll timeline.
 
 **The Hairline Not Box Rule.** Structure is drawn with 1px rules: vertical rules between columns, horizontal rules between rows, a strong top rule over lists. No cards, no panels, no drop shadows.
 
@@ -279,26 +266,27 @@ Two variants only, both square and both filled on hover by a sweep whose leading
 - **Arrow link:** medium weight in the link colour of the ground, with the hairline arrow nudging forward on hover.
 
 ### Division Rows
-The signature list. Full width rows under a strong top rule, each with a strong bottom hairline, a Display L name, an italic tagline and a short intro, and an arrow link at the far end. On hover or focus the row fills with navy along the seam angle (760ms), every text role flips to its navy ground value, and the copy steps in from the fill edge.
+Full width rows under a strong top rule, each with a strong bottom hairline, a Display L name and the short intro beside it. Static: a row already says everything its detail page does, so it links nowhere and has no hover state. The detail pages are reached from the header and footer.
 
 ### Division Columns
-The three divisions as columns divided by vertical rules, the way mullions divide a facade. On hover a column's rule thickens to 3px and takes the link colour.
+The three divisions along the foot of the home hero, under a drawn hairline, as columns divided by vertical rules the way mullions divide a facade: a Display S name and the short intro. Static, for the same reason as the rows. This is the only place the divisions appear as a block outside the divisions page; the corporate and division pages do not repeat them.
+
+### Scrollbar
+Fully styled in Chromium and Safari: a 0.75rem void gutter with a faint hairline on its inner edge, and a square brand-600 thumb inset 3px from the gutter so it reads as a pane set in a frame. Hover lifts it to brand-400, dragging to brand-300. No arrow buttons. Brand blue on void is 3.7:1. Firefox has no scrollbar pseudo-elements and gets the same two colours through scrollbar-color at the thin width. The page and the small screen menu both scroll on void, so one set of values serves both.
 
 ### Company Register
 A definition list set as a ruled register: label column of 3, value column of 9, strong top rule and a hairline under each row. Phones at display scale, the address, the legal name, and the tax id only when it is held. Unknown registry identifiers are omitted from the data, never rendered as a placeholder.
 
 ### Navigation
-- **Header:** fixed, void ground, mono logo left, nav right with hairline separators between items and the language switcher last in the link colour. Transparent over the hero, solid once the page moves.
+- **Header:** fixed, void ground, mono logo left at 2.25rem tall (2rem on small screens), nav right and centred on the header midline, with hairline separators between items and the language switcher last in the link colour. Transparent over the hero, solid once the page moves.
 - **Small screens:** the menu is a piece of the building. A full screen void panel opens behind the header row (the logo and toggle stay above it) over a facade drawn in CSS gradients, so it costs no page weight: a near tower of broad bays and slabs lower left, a far tower of fine mullions upper right, both at the seam angle, split by a lit band, with soft edges and a scrim so no line competes with the type. Rows: Home, Divisions, About, Contact in Menu type with a hairline arrow and a drawn rule beneath each; the three divisions hang off Divisions on a vertical hairline with their taglines. The foot holds the Phone label, both numbers in Menu Phone, then a hairline, the district and city in small tracked capitals and the language switcher as a ghost button. While open, the page behind is inert and does not scroll, Escape closes and returns focus to the toggle, and widening past the desktop breakpoint closes it.
 
-### Plaque
-The registered identity along the foot of the home hero: a drawn hairline, then legal name, divisions, district and city, and tax id in small tracked capitals separated by vertical hairlines, dropping items as the width narrows.
-
 ### Facade
-A decorative, hidden from assistive technology, three layer SVG: a sky layer with the lit seam band, and a near and a far tower plane of glass panes, spandrels, floor lines, mullions and a lit edge, all computed at build time. Variants: anchored (home hero), quiet (half strength lines for bands where copy leads), and scrims placed left, centre or bottom for legibility. Each division draws its own building in the same grammar.
+A decorative, hidden from assistive technology, three layer SVG: a sky layer with the lit seam band, and a near and a far tower plane of glass panes, spandrels, floor lines, mullions and a lit edge, all computed at build time. Variants: anchored (home hero), runners (home hero only, see Motion), quiet (half strength lines for bands where copy leads), and scrims placed left, centre or bottom for legibility. Each division draws its own building in the same grammar.
 
 ### Motion
-- **Hero entrance (CSS only, first paint):** towers slide in along the seam from opposite sides (2.1s), mullions and edges draw (2.6s), floors draw (2.8s), panes light (1.8s), a sheen passes once; the headline rises from a clip, the column rule draws down, the intro and actions rise, and the plaque rule draws across.
+- **Hero entrance (CSS only, first paint):** towers slide in along the seam from opposite sides (2.1s), mullions and edges draw (2.6s), floors draw (2.8s), panes light (1.8s); the headline rises from a clip, the column rule draws down, and the intro and actions rise. On the home page the foot rule draws across and the division columns rise.
+- **Runners (home hero only):** once the assembly settles (2.6s), lanes of panes on the far tower light one after another, along a floor or down one bay, like current through the traces of a chip. Each pane holds for one 66ms step and leaves a two step tail, with hard cuts rather than fades, so a lit pane jumps rather than glides. Fourteen lanes share a 6s cycle, alternate direction, and stay clear of the header and the hero's foot copy. They run in their own small SVG layer, pause while the hero is off screen, and are not drawn at all under reduced motion.
 - **Scroll:** the tower planes drift along the seam on a view timeline, the near plane further than the far.
 - **Below the fold:** exactly one device per band, and none of them hides content. Column rules draw down (1600ms), row hairlines draw across (1400ms), each staggered 140ms; or a band facade holds its assembly until in view.
 - **Small screen menu:** opens with a wipe whose leading edge is cut square to the seam (900ms, expo out) while the two towers slide into place along the seam (1400ms); rows rise on a 70ms stagger and each rule draws across. Closing reverses the wipe (560ms) with rows fading fast, and the panel only becomes hidden after the wipe completes.

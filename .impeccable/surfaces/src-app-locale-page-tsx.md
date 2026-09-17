@@ -31,11 +31,16 @@ Square corners, outlined ghost buttons on navy, solid blue primary.
 STORY: The visitor sees a substantial İstanbul company, reads three divisions under one structure,
 finds the registered identity (legal name, Vergi No, address) and calls a listed number.
 
-FIRST VIEWPORT: 100svh navy facade band. Transparent header: paper mono logo left, nav with hairline
-separators right. Display headline left at up to 6rem, italic accent on the second phrase; a
-vertical rule; intro and a solid blue "see the divisions" button plus phone link right. A plaque
-strip along the bottom edge: legal name, Kağıthane / İstanbul, phone. Towers slide along 59 degrees
-into place, mullions draw, headline lines rise; towers drift on scroll.
+FIRST VIEWPORT: 100svh navy facade band. Transparent 4.5rem header: paper mono logo left at 2.25rem,
+nav with hairline separators right, centred on the header midline. Display headline left at up to
+6rem, weight 400, in one colour. Along the foot, under a drawn hairline, the three divisions as ruled
+columns (name and intro), static. Towers slide along 59 degrees into place, mullions draw, headline
+rises; then lanes of panes on the far tower jump along floors and bays like current in a chip.
+Towers drift on scroll.
+
+Revised after design review: the two colour headline, the headline, intro and button stack, the
+plaque strip, the sheen pass, the division "read more" links and the repeated divisions blocks were
+all removed as template tells or repetition.
 
 FORM: Curtain Wall, rank 1 on the ordered grounded list, chosen by the user as the pick card over
 the assigned candidate 6 (The Fold); seed key 04899744.

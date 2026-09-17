@@ -33,7 +33,7 @@ export default async function DivisionsPage() {
 
       <Band tone="paper">
         <div className="shell band-pad">
-          <DivisionRows heading="h2" />
+          <DivisionRows />
         </div>
       </Band>
 

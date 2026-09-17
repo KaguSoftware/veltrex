@@ -1,12 +1,9 @@
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
-import { Band } from '@/components/ui/Band'
 import { ButtonLink } from '@/components/ui/Button'
 import { Arrow } from '@/components/ui/Arrow'
 import { Link } from '@/i18n/navigation'
 import { PageHero } from './PageHero'
-import { DivisionRows } from './DivisionRows'
-import { ContactBand } from './ContactBand'
 import { alternatesFor, openGraphFor } from '@/lib/seo/alternates'
 import type { DivisionSlug } from '@/lib/divisions'
 import type { InternalHref, Locale } from '@/i18n/routing'
@@ -70,17 +67,6 @@ export async function DivisionPage({ slug }: { slug: DivisionSlug }) {
           </>
         }
       />
-
-      <Band tone="paper" aria-labelledby={`${slug}-others`}>
-        <div className="shell band-pad">
-          <h2 id={`${slug}-others`} className="t-display-m t-italic mb-12 lg:mb-16">
-            {t('otherHeading')}
-          </h2>
-          <DivisionRows exclude={slug} heading="h3" />
-        </div>
-      </Band>
-
-      <ContactBand id={`${slug}-contact`} />
     </div>
   )
 }

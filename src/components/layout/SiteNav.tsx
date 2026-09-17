@@ -86,8 +86,7 @@ export function SiteNav({ items, home, labels, phones, place }: Props) {
 
   return (
     <>
-      {/* Label centre lines sit on the wordmark's centre line, not the lockup's. */}
-      <nav aria-label={labels.primary} className="mt-[calc(var(--wordmark-mid)-0.9375rem)] hidden items-center lg:flex">
+      <nav aria-label={labels.primary} className="hidden items-center lg:flex">
         <ul className="nav-rule flex items-center">
           {items.map((item) => (
             <li key={item.href} className="px-6">
@@ -109,7 +108,7 @@ export function SiteNav({ items, home, labels, phones, place }: Props) {
       <button
         ref={button}
         type="button"
-        className="menu-toggle relative z-50 -mr-2 mt-[calc(var(--wordmark-mid)-1.5rem)] grid size-12 place-items-center lg:hidden"
+        className="menu-toggle relative z-50 -mr-2 grid size-12 place-items-center lg:hidden"
         aria-expanded={open}
         aria-controls="site-menu"
         onClick={() => setOpen((v) => !v)}

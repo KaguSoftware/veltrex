@@ -23,7 +23,6 @@ export function generateStaticParams() {
 
 const PAPER = '#FDFAF6'
 const MIST = '#AEBBD4'
-const ACCENT = '#99BFFF'
 
 export default async function Image({ params }: { params: Promise<{ locale: string }> }) {
   // params is a Promise in image routes as of Next 16, same as in pages.
@@ -44,14 +43,6 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
   const home = messages.Home
 
   /*
-   * The catalogue title carries <em> markup for the page headline. The card
-   * sets it the same way: the plain lead on one line, the italic accent below.
-   */
-  const match = /^(.*?)<em>(.*?)<\/em>(.*)$/.exec(home.title)
-  const lead = match ? match[1].trim() : home.title
-  const accent = match ? `${match[2]}${match[3]}`.trim() : ''
-
-  /*
    * Fonts come from committed TTFs, NOT from next/font.
    *
    * next/font downloads woff2 and Satori cannot read woff2. Satori also does
@@ -61,9 +52,8 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
    * asserts those glyphs survive. See tools/brand/subset-og-fonts.mjs.
    */
   const fontDir = join(process.cwd(), 'assets', 'fonts')
-  const [display, displayItalic, body] = await Promise.all([
+  const [display, body] = await Promise.all([
     readFile(join(fontDir, 'NotoSerifDisplay-og.ttf')),
-    readFile(join(fontDir, 'NotoSerifDisplayItalic-og.ttf')),
     readFile(join(fontDir, 'AlbertSans-og.ttf')),
   ])
 
@@ -131,23 +121,8 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
                 letterSpacing: '-0.02em',
               }}
             >
-              {lead}
+              {home.title}
             </div>
-            {accent ? (
-              <div
-                style={{
-                  fontFamily: 'Display',
-                  fontStyle: 'italic',
-                  fontWeight: 300,
-                  fontSize: 86,
-                  lineHeight: 1.08,
-                  color: ACCENT,
-                  letterSpacing: '-0.02em',
-                }}
-              >
-                {accent}
-              </div>
-            ) : null}
 
             <div
               style={{
@@ -182,7 +157,6 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
       ...size,
       fonts: [
         { name: 'Display', data: display, style: 'normal', weight: 300 },
-        { name: 'Display', data: displayItalic, style: 'italic', weight: 300 },
         { name: 'Body', data: body, style: 'normal', weight: 500 },
       ],
     },

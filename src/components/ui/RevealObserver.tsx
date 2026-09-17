@@ -39,13 +39,23 @@ export function RevealObserver() {
       { rootMargin: '0px 0px -8% 0px', threshold: 0.08 },
     )
 
+    // Runner panes loop for as long as the page is open, so they stop whenever
+    // their building is out of view. Watched in both directions, never unobserved.
+    const runners = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        entry.target.classList.toggle('is-offscreen', !entry.isIntersecting)
+      }
+    })
+
     const frame = requestAnimationFrame(() => {
       document.querySelectorAll('[data-reveal]:not(.is-in)').forEach((el) => observer.observe(el))
+      document.querySelectorAll('.facade-runners').forEach((el) => runners.observe(el))
     })
 
     return () => {
       cancelAnimationFrame(frame)
       observer.disconnect()
+      runners.disconnect()
     }
   }, [pathname])
 

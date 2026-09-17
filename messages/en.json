@@ -18,12 +18,9 @@
   },
   "Home": {
     "eyebrow": "Technology, Investment, Trading",
-    "title": "Three divisions, <em>one structure</em>",
+    "title": "Three divisions, one structure",
     "intro": "Veltrex is a joint stock company operating across technology, investment and trading. In each division we stay involved from structuring through to execution.",
-    "divisionsHeading": "Our divisions",
-    "divisionsIntro": "Three fields, one way of working: we set up the structure, and we stay with it.",
     "contactHeading": "Get in touch",
-    "cta": "See the divisions",
     "allDivisions": "All divisions",
     "identityHeading": "Company details",
     "identityIntro": "The official details you will need before working with us."
@@ -31,7 +28,6 @@
   "Divisions": {
     "title": "Divisions",
     "intro": "The three divisions operate independently, but share the same approach.",
-    "readMore": "Read more",
     "technology": {
       "name": "Technology",
       "tagline": "Systems we build",
@@ -46,8 +42,7 @@
       "name": "Trading",
       "tagline": "Supply and distribution",
       "intro": "We coordinate sourcing, contracting and delivery across commercial operations."
-    },
-    "otherHeading": "Other divisions"
+    }
   },
   "About": {
     "title": "About",

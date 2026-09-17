@@ -18,12 +18,9 @@
   },
   "Home": {
     "eyebrow": "Teknoloji, Yatırım, Ticaret",
-    "title": "Üç iş kolu, <em>tek yapı</em>",
+    "title": "Üç iş kolu, tek yapı",
     "intro": "Veltrex; teknoloji, yatırım ve ticaret alanlarında faaliyet gösteren bir anonim şirkettir. Her iş kolunda kurgudan yürütmeye kadar süreçte yer alırız.",
-    "divisionsHeading": "İş kollarımız",
-    "divisionsIntro": "Üç alan, aynı çalışma biçimi: yapıyı kurar, sonrasında da içinde kalırız.",
     "contactHeading": "Bize ulaşın",
-    "cta": "İş kollarını görün",
     "allDivisions": "Tüm iş kolları",
     "identityHeading": "Şirket bilgileri",
     "identityIntro": "Bizimle çalışmaya başlamadan önce ihtiyaç duyacağınız resmi bilgiler."
@@ -31,7 +28,6 @@
   "Divisions": {
     "title": "İş Kolları",
     "intro": "Üç iş kolu birbirinden bağımsız çalışır, ancak aynı yaklaşımı paylaşır.",
-    "readMore": "Ayrıntılar",
     "technology": {
       "name": "Teknoloji",
       "tagline": "Kurduğumuz sistemler",
@@ -46,8 +42,7 @@
       "name": "Ticaret",
       "tagline": "Tedarik ve dağıtım",
       "intro": "Ticari süreçlerde tedarik, sözleşme ve teslim aşamalarını koordine ederiz."
-    },
-    "otherHeading": "Diğer iş kolları"
+    }
   },
   "About": {
     "title": "Kurumsal",

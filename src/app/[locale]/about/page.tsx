@@ -1,9 +1,7 @@
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { Band } from '@/components/ui/Band'
-import { Facade } from '@/components/facade/Facade'
 import { PageHero } from '@/components/layout/PageHero'
-import { DivisionColumns } from '@/components/layout/DivisionColumns'
 import { CompanyRegister } from '@/components/layout/CompanyRegister'
 import { alternatesFor, openGraphFor } from '@/lib/seo/alternates'
 import type { Locale } from '@/i18n/routing'
@@ -22,7 +20,6 @@ export async function generateMetadata({ params }: PageProps<'/[locale]/about'>)
 export default async function AboutPage() {
   const t = await getTranslations('About')
   const h = await getTranslations('Home')
-  const d = await getTranslations('Divisions')
 
   return (
     <>
@@ -44,21 +41,6 @@ export default async function AboutPage() {
             offices, which we cannot know from one address.
           */}
           <CompanyRegister addressNote={t('addressNote')} className="lg:col-span-8" />
-        </div>
-      </Band>
-
-      <Band tone="navy" className="overflow-hidden" aria-labelledby="about-divisions">
-        <Facade id="about-divisions-facade" name="statement" assemble quiet scrim="center" />
-        <div className="shell band-pad grid gap-y-14 lg:grid-cols-12 lg:gap-x-8">
-          <div className="lg:col-span-4">
-            <h2 id="about-divisions" className="t-display-l t-italic">
-              {h('divisionsHeading')}
-            </h2>
-            <p className="t-lead mt-6 max-w-[36ch]">
-              {d('intro')}
-            </p>
-          </div>
-          <DivisionColumns drawRules={false} className="lg:col-span-8" />
         </div>
       </Band>
     </>

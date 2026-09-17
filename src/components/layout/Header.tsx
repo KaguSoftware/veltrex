@@ -37,17 +37,16 @@ export async function Header() {
       </a>
 
       <header className="site-header" data-ground="void">
-        <div className="shell flex h-full items-start justify-between gap-6">
+        <div className="shell flex h-full items-center justify-between gap-6">
           {/* relative z-50: stays above the small-screen menu, which opens behind the header row. */}
           <Link
             href="/"
             aria-label={ORG.shortName}
-            className="relative z-50 mt-[calc((var(--header-height)-var(--logo-h))/2)] shrink-0"
+            className="relative z-50 shrink-0"
           >
             {/*
-              Mono artwork on the dark header, at --logo-h tall: the mono fold
-              gap stops resolving below roughly 48px. Tagline off, it is
-              illegible under 320px of lockup width. The home facade reads the
+              Mono artwork on the dark header, at --logo-h tall. Tagline off, it
+              is illegible under 320px of lockup width. The home facade reads the
               same metric to run its lit edge through this logo's fold.
             */}
             <Logo ground="brand" className="block h-[var(--logo-h)] w-auto text-[var(--color-paper-50)]" />

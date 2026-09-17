@@ -15,6 +15,7 @@ import { fileURLToPath } from 'node:url'
 import { routing } from '../src/i18n/routing.ts'
 import { ALL_HREFS } from '../src/lib/pages.ts'
 import { publicPath } from '../src/lib/paths.ts'
+import { upper } from '../src/lib/text.ts'
 
 const PORT = 3111
 const EXTERNAL = process.env.CHECK_BASE?.replace(/\/+$/, '')
@@ -86,16 +87,21 @@ async function run() {
     else fail('/', 'Turkish copy with real diacritics not found')
 
     /*
-     * The strongest available proof that casing is locale aware.
+     * Proof that casing is locale aware, in two halves.
+     *
      * "Teknoloji" uppercased the Turkish way is TEKNOLOJİ with a DOTTED capital.
      * A bare toUpperCase(), or CSS text-transform outside Firefox, gives the
-     * dotless TEKNOLOJI. Asserting the dotted form present AND the dotless form
-     * absent catches a regression in either direction.
+     * dotless TEKNOLOJI.
+     *
+     * The home page no longer renders a runtime-uppercased word containing a
+     * lowercase i (the one it did was the hero plaque, since removed), so the
+     * dotted half is asserted on the helper every uppercase goes through, and
+     * the page is asserted to carry no dotless form anywhere.
      */
-    if (r.html.includes('TEKNOLOJİ,')) ok('/ uppercases Turkish correctly', 'dotted İ')
-    else fail('/', 'expected TEKNOLOJİ with a dotted capital I')
-    if (!r.html.includes('TEKNOLOJI,')) ok('/ has no dotless capital I')
-    else fail('/', 'found the dotless TEKNOLOJI, so toUpperCase() or text-transform was used')
+    if (upper('teknoloji', 'tr') === 'TEKNOLOJİ') ok('upper() uppercases Turkish correctly', 'dotted İ')
+    else fail('upper()', `expected TEKNOLOJİ with a dotted capital I, got ${upper('teknoloji', 'tr')}`)
+    if (!/TEKNOLOJI[\s,<]|TICARET/.test(r.html)) ok('/ has no dotless capital I')
+    else fail('/', 'found a dotless TEKNOLOJI or TICARET, so toUpperCase() or text-transform was used')
   }
 
   console.log('\n3. a superfluous default-locale prefix redirects rather than duplicating')
