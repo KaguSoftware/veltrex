@@ -83,7 +83,7 @@ async function run() {
     const r = await body('/')
     if (r.html.includes('lang="tr"')) ok('/ has lang="tr"')
     else fail('/', 'expected lang="tr"')
-    if (r.html.includes('Üç iş kolu')) ok('/ renders Turkish copy', 'Üç iş kolu')
+    if (r.html.includes('Dört iş kolu')) ok('/ renders Turkish copy', 'Dört iş kolu')
     else fail('/', 'Turkish copy with real diacritics not found')
 
     /*

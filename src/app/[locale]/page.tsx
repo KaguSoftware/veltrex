@@ -43,7 +43,7 @@ export default async function HomePage() {
       <Band tone="deep">
         <div className="shell py-[clamp(6.5rem,13vw,11rem)]">
           {/*
-            The display-scale statement is structural on purpose: that the three
+            The display-scale statement is structural on purpose: that the four
             divisions are independent and share one approach is what the site
             can stand behind. Lines about how long Veltrex stays involved stay
             at body size until confirmed (CONTENT-TODO.md item 1).

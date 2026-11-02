@@ -3,6 +3,7 @@
     "home": "Home",
     "divisions": "Divisions",
     "technology": "Technology",
+    "startup": "Startup",
     "investment": "Investment",
     "trading": "Trading",
     "about": "About",
@@ -17,9 +18,9 @@
     "switchTo": "Türkçe"
   },
   "Home": {
-    "eyebrow": "Technology, Investment, Trading",
-    "title": "Three divisions, one structure",
-    "intro": "Veltrex is a joint stock company operating across technology, investment and trading. In each division we stay involved from structuring through to execution.",
+    "eyebrow": "Technology, Startup, Investment, Trading",
+    "title": "Four divisions, one structure",
+    "intro": "Veltrex is a joint stock company operating across technology, startup, investment and trading. In each division we stay involved from structuring through to execution.",
     "contactHeading": "Get in touch",
     "allDivisions": "All divisions",
     "identityHeading": "Company details",
@@ -27,21 +28,94 @@
   },
   "Divisions": {
     "title": "Divisions",
-    "intro": "The three divisions operate independently, but share the same approach.",
+    "intro": "The four divisions operate independently, but share the same approach.",
     "technology": {
       "name": "Technology",
       "tagline": "Systems we build",
-      "intro": "We handle design, development and commissioning across software and infrastructure."
+      "intro": "We handle design, development and commissioning across software and infrastructure.",
+      "services": [
+        {
+          "name": "Platform Development",
+          "description": "End-to-end development of software platforms built around a specific need."
+        },
+        {
+          "name": "Software & Platforms",
+          "description": "Product software that we keep developing and maintaining over time."
+        },
+        {
+          "name": "Infrastructure & Cloud",
+          "description": "Setting up and scaling server, network and cloud infrastructure."
+        },
+        {
+          "name": "Innovation Lab",
+          "description": "Where new ideas are tried out at prototype stage."
+        }
+      ]
+    },
+    "startup": {
+      "name": "Startup",
+      "tagline": "The first step for new ideas",
+      "intro": "We stay close to early-stage ventures as they are built, grown and matched with the right capital.",
+      "services": [
+        {
+          "name": "Startup Studio",
+          "description": "A working model where new ventures are built together, from first idea to first product."
+        },
+        {
+          "name": "Incubation & Mentoring",
+          "description": "Operational and strategic support for early-stage teams."
+        },
+        {
+          "name": "Early-Stage Investments",
+          "description": "Matching early-stage ventures with suitable sources of capital."
+        }
+      ]
     },
     "investment": {
       "name": "Investment",
       "tagline": "Structures built to last",
-      "intro": "In capital allocation we weigh the structure and the timing together."
+      "intro": "In capital allocation we weigh the structure and the timing together.",
+      "services": [
+        {
+          "name": "Growth Capital",
+          "description": "Structuring the capital a growing company needs."
+        },
+        {
+          "name": "Co-investment",
+          "description": "Bringing different investors together within the same structure."
+        },
+        {
+          "name": "Structuring Advisory",
+          "description": "Advice on structure and timing in capital allocation."
+        }
+      ]
     },
     "trading": {
       "name": "Trading",
       "tagline": "Supply and distribution",
-      "intro": "We coordinate sourcing, contracting and delivery across commercial operations."
+      "intro": "We coordinate sourcing, contracting and delivery across commercial operations.",
+      "services": [
+        {
+          "name": "Equipment",
+          "description": "Sourcing and distribution of industrial equipment."
+        },
+        {
+          "name": "Chemicals",
+          "description": "Coordinating the sourcing and distribution of chemical products."
+        },
+        {
+          "name": "Lead & Zinc",
+          "description": "Handling contracting and delivery in lead and zinc supply."
+        },
+        {
+          "name": "Electronics",
+          "description": "Sourcing electronic products, including distribution of Giotek products."
+        },
+        {
+          "name": "Metals",
+          "description": "Coordinating contracting and delivery in metals supply."
+        }
+      ]
     }
   },
   "About": {

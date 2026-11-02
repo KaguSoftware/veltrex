@@ -27,6 +27,7 @@ export const PAGES: Record<InternalHref, PageEntry> = {
   '/': { priority: 1.0, changeFrequency: 'monthly', lastModified: '2026-09-16' },
   '/divisions': { priority: 0.9, changeFrequency: 'monthly', lastModified: '2026-09-16' },
   '/divisions/technology': { priority: 0.8, changeFrequency: 'monthly', lastModified: '2026-09-16' },
+  '/divisions/startup': { priority: 0.8, changeFrequency: 'monthly', lastModified: '2026-11-02' },
   '/divisions/investment': { priority: 0.8, changeFrequency: 'monthly', lastModified: '2026-09-16' },
   '/divisions/trading': { priority: 0.8, changeFrequency: 'monthly', lastModified: '2026-09-16' },
   '/about': { priority: 0.7, changeFrequency: 'yearly', lastModified: '2026-09-16' },

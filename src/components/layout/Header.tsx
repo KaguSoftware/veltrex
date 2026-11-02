@@ -18,6 +18,7 @@ export async function Header() {
       label: t('divisions'),
       children: [
         { href: '/divisions/technology' as const, label: t('technology'), tagline: d('technology.tagline') },
+        { href: '/divisions/startup' as const, label: t('startup'), tagline: d('startup.tagline') },
         { href: '/divisions/investment' as const, label: t('investment'), tagline: d('investment.tagline') },
         { href: '/divisions/trading' as const, label: t('trading'), tagline: d('trading.tagline') },
       ],

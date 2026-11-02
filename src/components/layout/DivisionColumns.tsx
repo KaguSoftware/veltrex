@@ -3,7 +3,7 @@ import { getTranslations } from 'next-intl/server'
 import { DIVISIONS } from '@/lib/divisions'
 
 /**
- * The three divisions as columns divided by vertical rules, the way a facade
+ * The four divisions as columns divided by vertical rules, the way a facade
  * is divided by its mullions. The rules draw down as the columns enter view.
  *
  * Static on purpose: each division is described here in full, so a link to a
@@ -14,7 +14,7 @@ export async function DivisionColumns({ className = '' }: { className?: string }
   const t = await getTranslations('Divisions')
 
   return (
-    <ul className={`grid md:grid-cols-3 ${className}`}>
+    <ul className={`grid md:grid-cols-4 ${className}`}>
       {DIVISIONS.map((d, i) => (
         <li
           key={d.slug}

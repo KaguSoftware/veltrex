@@ -378,8 +378,9 @@ export function buildFacade(spec: FacadeSpec, anchored = false): FacadeGeometry 
 
 /**
  * The named facades. Each division gets its own building in the same grammar:
- * Technology is fine and dense, Investment is broad panes behind heavy floor
- * slabs, Trading sits between the two.
+ * Technology is fine and dense, Startup is lighter and quicker still,
+ * Investment is broad panes behind heavy floor slabs, Trading sits between
+ * Technology and Investment.
  */
 export const FACADES = {
   home: {
@@ -410,6 +411,13 @@ export const FACADES = {
     seed: 41,
     near: { bay: 16, recede: 0.99, minBay: 6, floor: 44, spandrel: 0, phase: 6, lit: 0.42, major: 6 },
     far: { bay: 13, recede: 0.99, minBay: 5, floor: 38, spandrel: 0, phase: 18, lit: 0.4, major: 6 },
+  },
+  startup: {
+    seam: 190,
+    gap: 300,
+    seed: 29,
+    near: { bay: 22, recede: 0.985, minBay: 7, floor: 56, spandrel: 6, phase: 10, lit: 0.44, major: 4 },
+    far: { bay: 16, recede: 0.988, minBay: 5, floor: 46, spandrel: 0, phase: 24, lit: 0.42, major: 5 },
   },
   investment: {
     seam: 120,

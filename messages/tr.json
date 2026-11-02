@@ -3,6 +3,7 @@
     "home": "Ana Sayfa",
     "divisions": "İş Kolları",
     "technology": "Teknoloji",
+    "startup": "Girişim",
     "investment": "Yatırım",
     "trading": "Ticaret",
     "about": "Kurumsal",
@@ -17,9 +18,9 @@
     "switchTo": "English"
   },
   "Home": {
-    "eyebrow": "Teknoloji, Yatırım, Ticaret",
-    "title": "Üç iş kolu, tek yapı",
-    "intro": "Veltrex; teknoloji, yatırım ve ticaret alanlarında faaliyet gösteren bir anonim şirkettir. Her iş kolunda kurgudan yürütmeye kadar süreçte yer alırız.",
+    "eyebrow": "Teknoloji, Girişim, Yatırım, Ticaret",
+    "title": "Dört iş kolu, tek yapı",
+    "intro": "Veltrex; teknoloji, girişim, yatırım ve ticaret alanlarında faaliyet gösteren bir anonim şirkettir. Her iş kolunda kurgudan yürütmeye kadar süreçte yer alırız.",
     "contactHeading": "Bize ulaşın",
     "allDivisions": "Tüm iş kolları",
     "identityHeading": "Şirket bilgileri",
@@ -27,21 +28,94 @@
   },
   "Divisions": {
     "title": "İş Kolları",
-    "intro": "Üç iş kolu birbirinden bağımsız çalışır, ancak aynı yaklaşımı paylaşır.",
+    "intro": "Dört iş kolu birbirinden bağımsız çalışır, ancak aynı yaklaşımı paylaşır.",
     "technology": {
       "name": "Teknoloji",
       "tagline": "Kurduğumuz sistemler",
-      "intro": "Yazılım ve altyapı tarafında tasarım, geliştirme ve devreye alma süreçlerini yürütürüz."
+      "intro": "Yazılım ve altyapı tarafında tasarım, geliştirme ve devreye alma süreçlerini yürütürüz.",
+      "services": [
+        {
+          "name": "Platform Geliştirme",
+          "description": "Özel bir ihtiyaca göre tasarlanan yazılım platformlarının uçtan uca geliştirilmesi."
+        },
+        {
+          "name": "Yazılım ve Platformlar",
+          "description": "Sürekli geliştirilen ve bakımı yapılan ürün yazılımları."
+        },
+        {
+          "name": "Altyapı ve Bulut",
+          "description": "Sunucu, ağ ve bulut altyapısının kurulumu ve ölçeklendirilmesi."
+        },
+        {
+          "name": "İnovasyon Laboratuvarı",
+          "description": "Yeni fikirlerin prototip aşamasında denendiği çalışma alanı."
+        }
+      ]
+    },
+    "startup": {
+      "name": "Girişim",
+      "tagline": "Yeni fikirlerin ilk adımı",
+      "intro": "Erken aşamadaki girişimlerin kurulma, büyüme ve doğru sermayeyle buluşma sürecinde yanlarında oluruz.",
+      "services": [
+        {
+          "name": "Startup Stüdyosu",
+          "description": "Yeni girişimlerin fikir aşamasından ilk ürüne kadar birlikte kurulduğu çalışma modeli."
+        },
+        {
+          "name": "Kuluçka ve Mentorluk",
+          "description": "Erken aşamadaki ekiplere operasyonel ve stratejik destek sağlanması."
+        },
+        {
+          "name": "Erken Aşama Yatırımlar",
+          "description": "Erken aşamadaki girişimlerin uygun sermaye kaynaklarıyla buluşturulması."
+        }
+      ]
     },
     "investment": {
       "name": "Yatırım",
       "tagline": "Uzun vadeli yapılar",
-      "intro": "Sermaye tahsisinde yapıyı ve zamanlamayı birlikte değerlendiririz."
+      "intro": "Sermaye tahsisinde yapıyı ve zamanlamayı birlikte değerlendiririz.",
+      "services": [
+        {
+          "name": "Büyüme Sermayesi",
+          "description": "Büyüme aşamasındaki şirketler için sermaye yapısının kurgulanması."
+        },
+        {
+          "name": "Birlikte Yatırım",
+          "description": "Farklı yatırımcıların aynı yapı içinde bir araya getirilmesi."
+        },
+        {
+          "name": "Yapılandırma Danışmanlığı",
+          "description": "Sermaye tahsisinde yapı ve zamanlama konusunda danışmanlık verilmesi."
+        }
+      ]
     },
     "trading": {
       "name": "Ticaret",
       "tagline": "Tedarik ve dağıtım",
-      "intro": "Ticari süreçlerde tedarik, sözleşme ve teslim aşamalarını koordine ederiz."
+      "intro": "Ticari süreçlerde tedarik, sözleşme ve teslim aşamalarını koordine ederiz.",
+      "services": [
+        {
+          "name": "Ekipman",
+          "description": "Endüstriyel ekipmanın tedariki ve dağıtımı."
+        },
+        {
+          "name": "Kimyasallar",
+          "description": "Kimyasal ürünlerin tedarik ve dağıtım süreçlerinin koordinasyonu."
+        },
+        {
+          "name": "Kurşun ve Çinko",
+          "description": "Kurşun ve çinko tedarikinde sözleşme ve teslim süreçlerinin yürütülmesi."
+        },
+        {
+          "name": "Elektronik",
+          "description": "Elektronik ürün tedariki; bu kapsamda Giotek ürünlerinin dağıtımını yürütürüz."
+        },
+        {
+          "name": "Metaller",
+          "description": "Metal tedarikinde sözleşme ve teslim süreçlerinin koordinasyonu."
+        }
+      ]
     }
   },
   "About": {

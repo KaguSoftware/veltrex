@@ -171,6 +171,9 @@
 [data-division='technology'] {
   --division-lit: 153 191 255; /* brand-300 */
 }
+[data-division='startup'] {
+  --division-lit: 0 101 234; /* brand-600 */
+}
 [data-division='investment'] {
   --division-lit: 197 218 254; /* brand-200 */
 }

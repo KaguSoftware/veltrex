@@ -67,6 +67,7 @@ export const routing = defineRouting({
     '/': '/',
     '/divisions': { tr: '/is-kollari', en: '/divisions' },
     '/divisions/technology': { tr: '/is-kollari/teknoloji', en: '/divisions/technology' },
+    '/divisions/startup': { tr: '/is-kollari/girisim', en: '/divisions/startup' },
     '/divisions/investment': { tr: '/is-kollari/yatirim', en: '/divisions/investment' },
     '/divisions/trading': { tr: '/is-kollari/ticaret', en: '/divisions/trading' },
     '/about': { tr: '/kurumsal', en: '/about' },

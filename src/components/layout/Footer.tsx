@@ -25,6 +25,7 @@ export async function Footer() {
     { href: '/' as const, label: nav('home') },
     { href: '/divisions' as const, label: nav('divisions') },
     { href: '/divisions/technology' as const, label: nav('technology') },
+    { href: '/divisions/startup' as const, label: nav('startup') },
     { href: '/divisions/investment' as const, label: nav('investment') },
     { href: '/divisions/trading' as const, label: nav('trading') },
     { href: '/about' as const, label: nav('about') },

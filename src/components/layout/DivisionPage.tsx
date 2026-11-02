@@ -4,6 +4,7 @@ import { ButtonLink } from '@/components/ui/Button'
 import { Arrow } from '@/components/ui/Arrow'
 import { Link } from '@/i18n/navigation'
 import { PageHero } from './PageHero'
+import { DivisionServices } from './DivisionServices'
 import { alternatesFor, openGraphFor } from '@/lib/seo/alternates'
 import type { DivisionSlug } from '@/lib/divisions'
 import type { InternalHref, Locale } from '@/i18n/routing'
@@ -26,16 +27,17 @@ export async function divisionMetadata(
 }
 
 /**
- * One layout for all three divisions.
+ * One layout for all four divisions.
  *
- * They share a structure because that is what makes three very different
+ * They share a structure because that is what makes four very different
  * activities read as ONE company, and because we know very little about each
  * division yet: a shared structure reads as deliberate at low content volume.
  *
  * Identity comes from the building. Each division's hero draws its own facade
  * in the same grammar (fine and dense, broad panes behind heavy slabs, or a mix
  * of the two), and `data-division` tints its lit panes with a different step on
- * the single brand ramp, never a new hue.
+ * the single brand ramp, never a new hue. The sub-sections run along the foot
+ * of the band, the same slot DivisionColumns fills on the home page.
  */
 export async function DivisionPage({ slug }: { slug: DivisionSlug }) {
   const t = await getTranslations('Divisions')
@@ -66,6 +68,7 @@ export async function DivisionPage({ slug }: { slug: DivisionSlug }) {
             </Link>
           </>
         }
+        foot={<DivisionServices slug={slug} />}
       />
     </div>
   )

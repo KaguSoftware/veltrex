@@ -3,7 +3,7 @@ import { HREFLANG } from './alternates'
 import type { Locale } from '@/i18n/routing'
 
 /**
- * Organization plus its three divisions.
+ * Organization plus its four divisions.
  *
  * Type choice: `Organization` with `department`, not `LocalBusiness` and not
  * `ProfessionalService`. The divisions are internal structure rather than
@@ -26,7 +26,7 @@ import type { Locale } from '@/i18n/routing'
  * Both omissions are tracked in CONTENT-TODO.md.
  */
 export function organizationJsonLd(locale: Locale) {
-  const departments = (['Technology', 'Investment', 'Trading'] as const).map((name) => ({
+  const departments = (['Technology', 'Startup', 'Investment', 'Trading'] as const).map((name) => ({
     '@type': 'Organization',
     name,
   }))

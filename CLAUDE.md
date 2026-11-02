@@ -3,8 +3,8 @@
 Corporate website for VELTREX TEKNOLOJİ VE TİCARET ANONİM ŞİRKETİ. Next.js App Router, bilingual
 Turkish and English, statically generated, hosted on Vercel.
 
-The company is organised into three divisions: Technology, Investment and Trading. It is **not** a
-marketing agency. Never write agency copy and never describe Veltrex as an agency.
+The company is organised into four divisions: Technology, Startup, Investment and Trading. It is
+**not** a marketing agency. Never write agency copy and never describe Veltrex as an agency.
 
 ## Commit and push attribution
 
